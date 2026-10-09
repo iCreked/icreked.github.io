@@ -963,12 +963,6 @@ footer#contact {
 
     /* УВЕЛИЧЕННАЯ КНОПКА НАВЕРХ ДЛЯ ТЕЛЕФОНОВ */
     .back-to-top { bottom: 25px !important; right: 25px !important; width: 54px !important; height: 54px !important; font-size: 18px !important; background: rgba(5, 5, 7, 0.9) !important; border: 1px solid rgba(0, 240, 255, 0.3) !important; }
-    /* ...какие-то твои прошлые мобильные стили... */
-    .modal-content { width: 92% !important; padding-top: 51.75% !important; }
-    .close-modal { top: -35px !important; font-size: 24px !important; }
-    .toggle-video-btn { padding: 6px 14px !important; font-size: 10px !important; }
-
-
     /* ==========================================================================
        ЖЕСТКО ИЗОЛИРОВАННЫЙ МОБИЛЬНЫЙ ДВУХКОЛОНОЧНЫЙ ФИКС (ТОЛЬКО ДО 768px)
        ========================================================================== */
