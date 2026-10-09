@@ -25,19 +25,11 @@
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
-
-    <!-- Шторка перехода между страницами -->
     <div class="page-overlay" onload="this.classList.add('fade-out')" style="animation: autoHideOverlay 0.5s forwards;"></div>
-
-    <!-- Курсор -->
     <div class="cursor-dot"></div>
-
-    <!-- Навигация с гамбургером -->
     <nav class="site-navigation">
-    <!-- Новое имя и индикатор статуса (Русская версия) -->
     <div class="logo-status-container">
         <a href="#about" class="logo">CREKED</a>
-
         <!-- <div class="status-badge is-busy"> Не доступен для заказов | Занят -->
         <div class="status-badge">
             <span class="status-dot"></span>
@@ -95,13 +87,10 @@
             </div>
         </div> -->
     </header>
-    <!-- Секция: Обо мне -->
     <section id="bio" class="bio-section">
         <div class="glow-sphere glow-bio-pink"></div>
         <div class="bio-container">
             <h2 class="section-title">ОБО МНЕ</h2>
-
-            <!-- ВСТАВЛЯЕМ НАШУ КАПСУЛУ СТАТИСТИКИ СЮДА -->
             <div class="stats-container bio-stats-capsule">
                 <div class="stat-item">
                     <h3 class="stat-number" data-target="3">0</h3>
@@ -125,13 +114,11 @@
             </div>
         </div>
     </section>
-    <!-- Секция: Портфолио -->
     <section id="portfolio" class="portfolio-section">
         <div class="glow-sphere glow-portfolio-cyan"></div>
         <div class="portfolio-container">
             <h2 class="section-title">ПОРТФОЛИО</h2>
             
-            <!-- Категории скроллинга -->
             <div class="portfolio-filters">
                 <button class="filter-btn active" data-filter="all">Последние работы</button>
                 <button class="filter-btn" data-filter="horizontal">Горизонтальный монтаж</button>
@@ -285,12 +272,11 @@
 
             </div>
         </div>
-        <!-- Кнопка "Показать еще" под сеткой портфолио -->
 <div class="more-works-container">
     <button class="load-more-btn" id="loadMoreBtn">Показать все работы ➕</button>
 </div>
     </section>
-    <!-- Модальное окно плеера -->
+    <!-- modal -->
     <div class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -301,18 +287,13 @@
         </div>
     </div>
 
-    <!-- Секция: Отзывы (Проверенная разметка) -->
     <section id="reviews" class="reviews-section">
         <div class="glow-sphere glow-reviews-pink"></div>
         <div class="reviews-container">
             <h2 class="section-title">ОТЗЫВЫ КЛИЕНТОВ</h2>
             
             <div class="reviews-grid">
-                                <!-- <span class="review-platform kw-badge">Kwork</span> -->
-                                <!-- <span class="review-platform ds-badge">Discord</span> -->
-                                <!-- <span class="review-platform tg-badge">Telegram</span> -->
 
-                <!-- Отзыв Quitly (С поддержкой видео) -->
                 <div class="review-card" data-review-video="https://www.youtube.com/embed/IMHw60Q4qjk?si=QAScrzweQpZFCKH8">
                     <div class="review-header">
                         <div class="review-avatar" style="background-image: url('images/quitly_rev.jpg');"></div>
@@ -326,7 +307,6 @@
                     <div class="review-video-link-holder"></div>
                 </div>
 
-                <!-- Отзыв Rikzario (С поддержкой видео) -->
                     <div class="review-card" data-review-video="https://www.youtube.com/embed/lO1akytPSow?si=Y8IrsG24NRIen-Gu" data-review-before="https://www.youtube.com/embed/TaVAHeuxh5g?si=NHm77VlbZc8H48Zk">
                     <div class="review-header">
                         <div class="review-avatar" style="background-image: url('images/rikzario_rev.jpg');"></div>
@@ -340,7 +320,6 @@
                     <div class="review-video-link-holder"></div>
                 </div>
 
-                <!-- Alina_Swift (С поддержкой видео) -->
                     <div class="review-card" data-review-video="https://www.youtube.com/embed/AZ3slJp1XvY?si=US9TK5f9HTTp5r9w">
                     <div class="review-header">
                         <div class="review-avatar" style="background-image: url('images/alina_rev.jpg');"></div>
@@ -353,23 +332,18 @@
                     <p class="review-text">«Очень круто и качественно выполнил работу. А главное что в кратчайшие сроки. Все пожелания были учтены и все правки вносились супер быстро! Легенда»</p>
                     <div class="review-video-link-holder"></div>
                 </div>
-                <!-- data-private="true" (Конфиденциальный) -->
     </section>
 
-    <!-- ОБНОВЛЕННЫЙ ДИЗАЙНЕРСКИЙ ФУТЕР -->
     <footer id="contact">
-        <!-- Пульсирующий неоновый шар для глубины подвала -->
         <div class="glow-sphere glow-contact-cyan"></div>
         
         <div class="footer-container">
             <h2 class="footer-title">КОНТАКТЫ</h2>
-            <!-- Главный блок заказа -->
             <div class="main-order-block">
                 <p class="order-notice">Тут вы можете удобно заказать монтаж своего видео:</p>
                 <a href="https://discord.gg/pErBD6FZeb" class="social-btn ds main-ds-btn">Заказать через Discord</a>
             </div>
 
-            <!-- Разделительная сетка для второстепенных соцсетей -->
             <div class="footer-grid-divider">
                 <p class="footer-desc">Другие способы связи и платформы:</p>
                 <div class="social-links">
@@ -382,8 +356,6 @@
             <p class="copy">&copy; 2026 Creked. Все права защищены.</p>
         </div>
     </footer>
-
-    <!-- Кнопка возврата наверх -->
     <div class="back-to-top" id="scrollTopBtn">▲</div>
 
     <script src="script.js"></script>
