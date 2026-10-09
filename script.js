@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } 
             // Вариант 2: Отзыв со ссылкой на видео (обычное или со сравнением)
             else if (videoUrl) {
-                const btnText = isEnPage ? "Watch project ▶" : "Смотреть работу ▶";
+                const btnText = isEnPage ? "Watch project 💼" : "Смотреть работу 💼";
                 holder.innerHTML = `<span class="review-work-btn">${btnText}</span>`;
 
                 const btn = holder.querySelector('.review-work-btn');
@@ -385,8 +385,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Если мы на вкладке "Последние работы", возвращаем кнопку на место
                 loadMoreBtn.parentElement.style.display = 'flex';
                 loadMoreBtn.innerText = isExpanded 
-                    ? (isEn ? "Hide projects ↖" : "Скрыть работы ↖") 
-                    : (isEn ? "Show all projects ↘" : "Показать все работы ↘");
+                    ? (isEn ? "Hide projects ➖" : "Скрыть работы ➖") 
+                    : (isEn ? "Show all projects ➕" : "Показать все работы ➕");
             }
         }
 
