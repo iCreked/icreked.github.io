@@ -67,8 +67,7 @@
             </div>
         </div>
     </nav>
-
-    <!-- Hero Section -->
+    <!-- Главный экран -->
     <header id="about">
         <div class="glow-sphere glow-pink"></div>
         <div class="glow-sphere glow-cyan"></div>
@@ -77,10 +76,23 @@
             <h1 class="main-title"><span class="cyan-accent">EDITING</span> FOR YOUTUBE, SHORTS AND REELS</h1>
             <p class="hero-desc">Dynamic editing with a focus on pacing, graphics, and sound. From Shorts to full-length YouTube videos.</p>
             <div class="btn-group-center">
-                <a href="#portfolio" class="btn btn-primary">View Works</a>
+                <a href="#portfolio" class="btn btn-primary">View all Works</a>
                 <a href="#contact" class="btn btn-secondary">Discuss Project</a>
             </div>
         </div>
+        <!-- Правая часть: Окно самого Шоурила 
+            <div class="hero-showreel-block">
+                <div class="showreel-wrapper">
+                    <iframe 
+                        id="heroShowreelPlayer"
+                        src="#" 
+                        allow="autoplay; encrypted-media" 
+                        allowfullscreen>
+                    </iframe>
+                    <div class="showreel-glow"></div>
+                </div>
+            </div>
+        </div> -->
     </header>
     <!-- Секция: Обо мне -->
     <section id="bio" class="bio-section">
@@ -193,17 +205,6 @@
                         <p>Trending bottom-pop-up subtitles, sound design, face tracking.</p>
                     </div>
                 </div>
-                                <!-- ПОДКАСТ ФРЕЙМ (ВЕРТИКАЛЬНОЕ) -->
-                <div class="card" data-category="vertical" data-date="2026-09-12" data-video="https://www.youtube.com/embed/s0kCKgw2qlQ?si=jow4iadb0tcud7bd">
-            <div class="card-preview" style="background-image: url('images/vertical_framepod.jpg');">
-                        <div class="play-icon"></div>
-                    </div>
-                    <div class="card-info">
-                        <span class="badge badge-pink">Vertical</span>
-                        <h3>Podcast example - frametamer</h3>
-                        <p>Trendy bottom-pop-up subtitles, sound design.</p>
-                    </div>
-                </div>
                                 <!-- quilty МАДЖЕСТИК (ВЕРТИКАЛЬНОЕ) -->
                 <div class="card" data-category="vertical" data-date="2026-09-13" data-video="https://www.youtube.com/embed/IMHw60Q4qjk?si=QAScrzweQpZFCKH8">
             <div class="card-preview" style="background-image: url('images/vertical_quiltymaj.jpg');">
@@ -215,29 +216,7 @@
                         <p>Subtitles, sound design, money graphic animation</p>
                     </div>
                 </div>
-            <!-- ИГРОВАЯ АНИМАЦИЯ (ИГРОВОЕ) -->
-            <div class="card initial-hide" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/bfOxJpxoZe4?si=bTyshK8iR6nrVlyl">
-            <div class="card-preview" style="background-image: url('images/gaming_animation1.jpg');">
-                    <div class="play-icon"></div>
-                </div>
-                <div class="card-info">
-                    <span class="badge badge-green">Gaming</span>
-                    <h3>Example of an animation in GTA 5 RP</h3>
-                    <p>Animation of cars from listings, addition of in-game subtitles</p>
-                </div>
-            </div>
-                        <!-- ИГРОВАЯ ПЕРЕСТРЕЛКА GTA5RP 1 (ИГРОВОЕ) -->
-            <div class="card initial-hide" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/Ss9nLJk4hvM?si=_mNiNrIHI1lxO8Tb">
-            <div class="card-preview" style="background-image: url('images/gaming_perestrelka1.jpg');">
-                    <div class="play-icon"></div>
-                </div>
-                <div class="card-info">
-                    <span class="badge badge-green">Gaming</span>
-                    <h3>Example of a firefight in GTA 5RP (1)</h3>
-                    <p>Glides, "underwater" music, and various effects.</p>
-                </div>
-            </div>
-                        <!-- ИГРОВАЯ ПЕРЕСТРЕЛКА GTA5RP 2 (ИГРОВОЕ) -->
+                        <!-- ИГРОВАЯ ПЕРЕСТРЕЛКА GTA5RP (ИГРОВОЕ) -->
             <div class="card initial-hide" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/1PaR9xP1U8M?si=bJF-MCyt7G3iTWBg">
             <div class="card-preview" style="background-image: url('images/gaming_perestrelka2.jpg');">
 
@@ -245,7 +224,7 @@
                 </div>
                 <div class="card-info">
                     <span class="badge badge-green">Gaming</span>
-                    <h3>Example of a firefight in GTA 5RP (2)</h3>
+                    <h3>Example of a firefight in GTA 5RP</h3>
                     <p>Camera pans, a momentary switch to a black-and-white screen, "underwater" audio, and various effects.</p>
                 </div>
             </div>
@@ -280,18 +259,32 @@
                     <div class="play-icon"></div>
                 </div>
                 <div class="card-info">
-                    <span class="badge badge-green">Игровое</span>
-                    <h3>Пример с субтитрами и поп-ап предысторией</h3>
-                    <p>Субтитры над головой, поп-ап окно с видео</p>
+                    <span class="badge badge-green">Gaming</span>
+                    <h3>Example with subtitles and a pop-up backstory</h3>
+                    <p>Сsubtitles above the head, pop-up video window</p>
                 </div>
             </div>
+
+                        <!-- ИГРОВАЯ АНИМАЦИЯ (ИГРОВОЕ) 
+            <div class="card initial-hide" data-category="gaming" data-date="2026-09-12" data-video="https://www.youtube.com/embed/bfOxJpxoZe4?si=bTyshK8iR6nrVlyl">
+            <div class="card-preview" style="background-image: url('images/gaming_animation1.jpg');">
+                    <div class="play-icon"></div>
+                </div>
+                <div class="card-info">
+                    <span class="badge badge-green">Gaming</span>
+                    <h3>Example of an animation in GTA 5 RP</h3>
+                    <p>Animation of cars from listings, addition of in-game subtitles</p>
+                </div>
+            </div> -->
+
+
 <!-- ДЛЯ НОВЫХ ВИДЕО -->
 
             </div>
         </div>
         <!-- Кнопка "Показать еще" под сеткой портфолио -->
 <div class="more-works-container">
-    <button class="load-more-btn" id="loadMoreBtn">Show all projects ↘</button>
+    <button class="load-more-btn" id="loadMoreBtn">Show all projects ➕</button>
 </div>
     </section>
 
