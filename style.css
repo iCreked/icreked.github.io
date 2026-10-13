@@ -30,23 +30,25 @@ body {
 }
 /* --- КАСТОМНЫЙ КУРСОР НА САМОМ ВЕРХНЕМ СЛОЕ --- */
 .cursor-dot {
-    width: 6px; 
-    height: 6px; 
-    background: #00f0ff; 
+    width: 6px;
+    height: 6px;
+    background: #a3b899; /* Фирменный оливково-зеленый цвет сайта */
     border-radius: 50%;
-    position: fixed; 
-    transform: translate(-50%, -50%); 
-    pointer-events: none; 
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
     z-index: 999999 !important;
-    box-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff; 
-    transition: width 0.3s ease, height 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px rgba(163, 184, 153, 0.3); /* Деликатное мягкое свечение точки */
+    transition: width 0.3s ease, height 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 }
+
+/* ЭФФЕКТ НАВЕДЕНИЯ: Курсор плавно расширяется в чистое кольцо без заливки текста */
 .cursor-dot.hovered {
-    width: 30px; 
-    height: 30px; 
-    background: rgba(0, 240, 255, 0.15);
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); 
-    border: 1px solid rgba(0, 240, 255, 0.3);
+    width: 42px; /* Увеличиваем диаметр кольца при ховере, чтобы оно красиво обнимало элементы */
+    height: 42px;
+    background: transparent !important; /* НАМЕРТВО УБИРАЕМ ЗАЛИВКУ: текст больше не перекрывается! */
+    box-shadow: 0 0 12px rgba(163, 184, 153, 0.2); /* Легкий воздушный объем */
+    border: 1px solid #a3b899; /* Оставляем только тонкий, аккуратный оливковый контур */
 }
 
 /* --- ШТОРКА ПЛАВНОГО ПЕРЕХОДА СТРАНИЦ --- */
@@ -174,30 +176,47 @@ body {
     box-shadow: 0 0 12px rgba(0, 240, 255, 0.1) !important;
 }
 
-.box-label {
-    font-size: 10px !important; 
-    font-weight: 900 !important;
+.lang-switch-box .box-label,
+.toggle-holder .box-label {
+    position: relative !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    color: #55555e !important; /* Неактивные буквы */
+    font-size: 11px !important;
+    font-weight: 700 !important;
     letter-spacing: 0.5px !important;
-    color: #44444a !important; 
-    z-index: 3 !important; 
+    padding: 5px 14px !important;
+    z-index: 5 !important; /* Насильно поднимаем текст НАД ползунком */
+    text-transform: uppercase !important;
+    transform: none !important;
+    margin: 0 !important;
     transition: color 0.3s ease !important;
-    line-height: 26px !important; 
-    height: 26px !important; 
-    display: block !important;
 }
+
+/* При наведении буквы становятся ярко-белыми */
+.lang-switch-box .box-label:hover {
+    color: #ffffff !important;
+}
+
 .label-left, .label-right { 
     transform: translateY(-0.5px) !important; 
 }
 
 .box-slider {
-    position: absolute !important; 
-    top: 2px !important;
-    width: 40px !important; 
-    height: 22px !important;
-    border-radius: 20px !important; 
-    z-index: 2 !important;
-    transition: left 0.35s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s, box-shadow 0.3s !important;
+    position: absolute !important;
+    top: 4px !important;
+    bottom: 4px !important;
+    left: 4px !important;
+    width: 38px !important; /* Четкий размер, чтобы аккуратно обнять буквы RU */
+    height: calc(100% - 8px) !important;
+    background: rgba(163, 184, 153, 0.12) !important; /* Фирменная полупрозрачная оливковая заливка */
+    border: 1px solid rgba(163, 184, 153, 0.5) !important; /* Тонкий зеленый контур */
+    border-radius: 20px !important;
+    z-index: 2 !important; /* Прячем под буквы, чтобы текст читался поверх */
+    box-shadow: 0 0 10px rgba(163, 184, 153, 0.2) !important; /* Мягкое благородное свечение */
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), width 0.3s ease !important;
 }
+
 
 .page-toggle-ru .box-slider { 
     left: 3px !important; 
@@ -1501,56 +1520,1623 @@ footer#contact {
         width: 100% !important;
         text-align: center !important;
     }
-    /* ==========================================================================
-   РЕДИЗАЙН. БЛОК 1: ФОНОВАЯ СЕТКА ЛИНИЙ И МИНИМАЛИСТИЧНАЯ ШАПКА
+}
+
+/* ==========================================================================
+   РЕДИЗАЙН. БЛОК 2: ПЕЧАТНЫЙ ШРИФТ И ОВАЛЬНЫЕ КНОПКИ-КАПСУЛЫ
    ========================================================================== */
 
-/* Обновляем глубокий фоновый цвет сайта */
-body {
-    background-color: #0d0d0f !important;
-    color: #efeff1 !important;
+/* Настраиваем разделительную линию под главным экраном */
+.hero-section {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    z-index: 1 !important;
 }
 
-/* Настраиваем те самые тонкие линии (Grid Lines) по бокам сайта, как на макете */
-body::before {
-    content: '' !important;
-    position: fixed !important;
-    top: 0 !important; left: 10% !important; right: 10% !important; bottom: 0 !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.03) !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.03) !important;
-    pointer-events: none !important;
-    z-index: 0 !important;
+/* Делаем шрифт заголовка крупным, утонченным и печатным */
+.main-title {
+    font-size: 68px !important;
+    font-weight: 400 !important; /* Облегчаем начертание */
+    letter-spacing: -1.5px !important;
+    line-height: 1.1 !important;
+    text-transform: uppercase !important;
 }
 
-/* Делаем шапку полностью прозрачной с мягким размытием */
-.site-navigation {
+/* Выделяем ключевое слово сочным бирюзовым неоном без подчеркиваний */
+.main-title span {
+    font-weight: 700 !important;
+    color: #00f0ff !important;
+    border-bottom: none !important;
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.25) !important;
+}
+
+/* Делаем описание под заголовком мягким графитовым цветом */
+.hero-desc {
+    font-size: 14px !important;
+    color: #86868b !important;
+    max-width: 520px !important;
+    line-height: 1.6 !important;
+}
+
+/* СТИЛИЗАЦИЯ НОВЫХ КНОПОК-КАПСУЛ (СМОТРЕТЬ РАБОТЫ / ОБСУДИТЬ) */
+.btn-premium-text {
+    display: inline-block !important;
+    background: rgba(0, 240, 255, 0.06) !important;
+    border: 1px solid rgba(0, 240, 255, 0.2) !important;
+    color: #00f0ff !important;
+    padding: 14px 30px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    border-radius: 30px !important; /* Намертво скругляем края в овал */
+    text-decoration: none !important;
+    text-align: center !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+/* При наведении кнопка сочно вспыхивает бирюзой */
+.btn-premium-text:hover {
+    background: #00f0ff !important;
+    color: #0d0d0f !important;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.4) !important;
+    transform: translateY(-1px) !important;
+}
+
+.btn-premium-outline {
+    display: inline-block !important;
     background: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    padding: 14px 30px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    border-radius: 30px !important; /* Намертво скругляем края в овал */
+    text-decoration: none !important;
+    text-align: center !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+.btn-premium-outline:hover {
+    border-color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    transform: translateY(-1px) !important;
+}
+/* ==========================================================================
+   РЕДИЗАЙН. БЛОК 3: МЯГКАЯ ОЛИВКОВО-ЗЕЛЕНАЯ ПАЛИТРА И ОТКЛЮЧЕНИЕ НЕОНА
+   ========================================================================== */
+
+/* 1. ОТКЛЮЧАЕМ ЯРКИЙ ФИОЛЕТОВО-БИРЮЗОВЫЙ НЕОН НА ЗАДНЕМ ФОНЕ */
+.hero-section, 
+#about, 
+.showreel-glow,
+[class*="-glow"] {
+    background: #0d0d0f !important; /* Чистый благородный темный графит без цветных пятен */
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+/* 2. МЕНЯЕМ ЦВЕТ СПАНА В ЗАГОЛОВКЕ НА МЯГКИЙ ЗЕЛЕНОВАТЫЙ ХАКИ */
+.main-title span {
+    color: #a3b899 !important; /* Элегантный приглушенный зеленый оттенок из макета */
+    text-shadow: none !important;
+}
+
+/* 3. ПЕРЕКРАШИВАЕМ ГЛАВНУЮ КНОПКУ В СТИЛЬНЫЙ ОЛИВКОВО-ЗЕЛЕНЫЙ (СМОТРЕТЬ РАБОТЫ) */
+.btn-premium-text {
+    background: rgba(163, 184, 153, 0.1) !important; /* Мягкая прозрачная зеленая основа */
+    border: 1px solid rgba(163, 184, 153, 0.3) !important; /* Тонкий зеленый контур */
+    color: #a3b899 !important; /* Текст в тон рамки */
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+/* Ховер-эффект: благородная заливка при наведении */
+.btn-premium-text:hover {
+    background: #a3b899 !important;
+    color: #0d0d0f !important;
+    box-shadow: 0 10px 25px rgba(163, 184, 153, 0.2) !important;
+}
+
+/* 4. ВТОРОСТЕПЕННАЯ КНОПКА (ОБСУДИТЬ ПРОЕКТ) */
+.btn-premium-outline {
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #888893 !important; /* Чуть приглушаем яркость текста по макету */
+}
+.btn-premium-outline:hover {
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+}
+
+/* 5. ИСПРАВЛЯЕМ ЛАНГ-ПАК И СТАТУС-МАРКЕР ПОД НОВЫЕ ЦВЕТА */
+.lang-switch-box .box-label.current-lang,
+.status-dot {
+    background: rgba(163, 184, 153, 0.15) !important;
+    border-color: #a3b899 !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
+.status-dot {
+    background-color: #a3b899 !important;
+}
+/* ==========================================================================
+   РЕДИЗАЙН. БЛОК 4: ИДЕАЛЬНАЯ ПУЛЬСИРУЮЩАЯ БЕЖЕВАЯ СФЕРА НА ЧИСТОМ КОДЕ
+   ========================================================================== */
+
+/* 1. Настраиваем чистый, глубокий Web3-графит для главного экрана */
+.hero-section, 
+#about {
+    background: #0d0d0f !important;
+    background-color: #0d0d0f !important;
+    background-image: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+    z-index: 1 !important;
+}
+/* ==========================================================================
+   ФИНАЛЬНЫЙ ФИКС БЕЖЕВОЙ СФЕРЫ ЧЕРЕЗ HTML-ТЕГ
+   ========================================================================== */
+
+/* Полностью очищаем старые псевдоэлементы, чтобы они не дублировались */
+.hero-section::after {
+    display: none !important;
+    content: none !important;
+}
+
+/* ==========================================================================
+   ОКОНЧАТЕЛЬНЫЙ ФИКС БЕЖЕВОЙ СФЕРЫ (ИДЕАЛЬНЫЙ ФОКУС И ПЛОТНОСТЬ ПО МАКЕТУ)
+   ========================================================================== */
+.premium-spa-sphere {
+    position: absolute !important;
+    /* Полностью сохраняем твои идеальные координаты положения */
+    bottom: -450px !important;
+    right: -350px !important;
+    /* Полностью сохраняем твои идеальные пропорции масштаба */
+    width: 1500px !important;
+    height: 1200px !important;
+    /* Удерживаем сочную Web3-плотность градиента */
+    background: radial-gradient(circle, rgba(218, 195, 160, 0.22) 0%, rgba(218, 195, 160, 0.08) 40%, transparent 70%) !important;
+    /* КРИТИЧЕСКИЙ ФИКС: Уменьшаем размытие для плотности ядра без эффекта блеклого тумана */
+    filter: blur(55px) !important;
+    z-index: 1 !important; /* Намертво удерживаем на заднем плане за контентом */
+    pointer-events: none !important;
+    animation: premiumHtmlPulse 11s ease-in-out infinite alternate !important;
+}
+
+/* Удерживаем текстовый блок и кнопки строго НАД нашей новой HTML-сферой */
+.hero-container-split,
+.hero-text-block,
+.main-title,
+.hero-desc,
+.btn-group-left {
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* Плавная анимация изменения масштаба сферы */
+@keyframes premiumHtmlPulse {
+    0% {
+        transform: scale(0.94);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1.06);
+        opacity: 1;
+    }
+}
+
+/* УДЕРЖИВАЕМ ТВОИ КРУПНЫЕ ПРЕМИАЛЬНЫЕ КНОПКИ-КАПСУЛЫ */
+.btn-premium-text, 
+.btn-premium-outline {
+    padding: 16px 36px !important;
+    font-size: 14px !important;
+    letter-spacing: 0.3px !important;
+    font-weight: 500 !important;
+    border-radius: 40px !important;
+}   
+/* ==========================================================================
+   ШАПКА САЙТА. ШАГ 1: ПРОЗРАЧНОЕ МЕНЮ И МАТОВОЕ СТЕКЛО
+   ========================================================================== */
+
+/* Насильно делаем шапку прозрачной с легким Web3-размытием фона при скролле */
+.site-navigation, 
+nav, 
+header nav {
+    background: transparent !important;
+    background-color: transparent !important;
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
-    padding: 24px 10% !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important; /* Тонкая печатная линия */
+    padding: 22px 10% !important;
 }
 
-/* Делаем ссылки в меню аккуратными, строгими маленькими буквами */
-.site-navigation .nav-links a {
+/* Пункты меню делаем аккуратными маленькими буквами, убирая тяжелый капс */
+.site-navigation .nav-links a,
+nav .nav-links a {
     color: #888893 !important;
     font-size: 13px !important;
     font-weight: 500 !important;
+    letter-spacing: 0.3px !important;
+    text-transform: none !important; /* Отключаем Капслок */
+    transition: color 0.3s ease !important;
+}
+
+/* Эффект подсвечивания ссылок белым при наведении */
+.site-navigation .nav-links a:hover,
+nav .nav-links a:hover {
+    color: #ffffff !important;
+}
+/* ==========================================================================
+   ШАПКА САЙТА. ШАГ 2: ВНЕШНЯЯ КАПСУЛА И ТЕКСТ ТУМБЛЕРА
+   ========================================================================== */
+
+/* Настраиваем общую внешнюю рамку тумблера языков */
+.lang-switch-box,
+.toggle-holder a,
+[class*="lang-switch"] {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    background: rgba(255, 255, 255, 0.02) !important; /* Тонкая благородная темная подложка */
+    border: 1px solid rgba(255, 255, 255, 0.08) !important; /* Тонкий контур по умолчанию */
+    padding: 4px !important;
+    border-radius: 30px !important; /* Скругляем в идеальную Web3-капсулу */
+    text-decoration: none !important;
+    overflow: hidden !important;
+    box-shadow: none !important; /* Полностью стираем старые бирюзовые тени */
+    transition: border-color 0.3s ease !important;
+}
+
+/* При наведении рамка тумблера будет деликатно зеленеть */
+.lang-switch-box:hover,
+.toggle-holder a:hover {
+    border-color: rgba(163, 184, 153, 0.3) !important;
+}
+
+/* Приводим буквы RU и ENG к строгому, читаемому виду */
+.lang-switch-box .box-label,
+.toggle-holder .box-label {
+    position: relative !important;
+    color: #55555e !important; /* Неактивные буквы делаем приглушенными */
+    font-size: 11px !important;
+    font-weight: 700 !important;
     letter-spacing: 0.5px !important;
-    text-transform: none !important; /* Отключаем капс */
+    padding: 5px 14px !important;
+    z-index: 3 !important; /* Поднимаем буквы над бегунком, чтобы они не перекрывались */
+    text-transform: uppercase !important;
+    transition: color 0.3s ease !important;
 }
-.site-navigation .nav-links a:hover {
+
+/* Текст активного языка подсвечиваем чистым белым цветом */
+.page-toggle-ru .label-left,
+.lang-switch-box .current-lang {
+    color: #ffffff !important;
+}
+.page-toggle-en .label-right {
+    color: #ffffff !important;
+}
+/* ==========================================================================
+   НОВЫЙ ПРЕМИАЛЬНЫЙ ТУМБЛЕР ЯЗЫКОВ С НУЛЯ (БЕЗБАГОВЫЙ ВЕБ3 ВАРИАНТ)
+   ========================================================================== */
+
+/* КОРРЕКЦИЯ ПРОПОРЦИЙ И ОТСТУПОВ НОВОГО ТУМБЛЕРА */
+.new-spa-lang-container {
+    display: inline-flex !important;
+    align-items: center !important;
+    background: rgba(255, 255, 255, 0.02) !important; /* Тёмная Web3-подложка */
+    border: 1px solid rgba(255, 255, 255, 0.08) !important; /* Тонкий изящный контур капсулы */
+    padding: 4px 6px !important; /* Чуть увеличиваем вертикальный отступ для пропорций */
+    border-radius: 30px !important; /* Идеальное скругление в овальную капсулу */
+    gap: 4px !important; /* Делаем зазор между буквами чуть посвободнее */
+    
+    /* КРИТИЧЕСКИЙ ФИКС: Создаем сочный отступ слева, чтобы отодвинуть капсулу от кнопки Контакты */
+    margin-left: 30px !important; 
+}
+
+
+/* Стили для текстовых кнопок RU и ENG */
+.spa-lang-btn {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    color: #55555e !important; /* Неактивный язык делаем благородно-матовым */
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    padding: 5px 12px !important;
+    border-radius: 20px !important;
+    border: 1px solid transparent !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* При наведении неактивная кнопка аккуратно подсвечивается белым */
+.spa-lang-btn:hover {
     color: #ffffff !important;
 }
 
-/* Переключатель языка RU / ENG превращаем в бирюзовую неоновую капсулу */
-.lang-switch-box .box-label.current-lang {
-    background: rgba(0, 240, 255, 0.12) !important;
-    border: 1px solid #00f0ff !important;
+/* Разделительный знак слэша */
+.spa-lang-divider {
+    color: rgba(255, 255, 255, 0.1) !important;
+    font-size: 11px !important;
+    pointer-events: none !important;
+}
+
+/* СТИЛИ ДЛЯ АКТИВНОГО ВЫБРАННОГО ЯЗЫКА (ОЛИВКОВОЕ СВЕЧЕНИЕ КАНАВКИ) */
+.spa-lang-btn.active {
+    background: rgba(163, 184, 153, 0.12) !important; /* Наша фирменная зеленая подложка хаки */
+    border: 1px solid rgba(163, 184, 153, 0.4) !important; /* Тонкая оливковая рамка вокруг букв */
+    color: #a3b899 !important; /* Цвет букв строго в тон кнопок сайта */
+    /* Деликатный, едва заметный интерьерный свет вокруг активного языка */
+    box-shadow: 0 0 10px rgba(163, 184, 153, 0.2) !important;
+}
+/* ==========================================================================
+   МАТОВЫЙ WEB3 СТАТУС-МАРКЕР "ДОСТУПЕН ДЛЯ ЗАКАЗОВ" ПО РЕФЕРЕНСУ
+   ========================================================================== */
+
+/* Настраиваем саму внешнюю капсулу статуса строго по макету */
+.status-badge,
+[class*="status-badge"],
+[class*="availability"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important; /* Зазор между зеленой точкой и текстом */
+    
+    /* Делаем матовый, полупрозрачный приглушенный фон */
+    background: rgba(255, 255, 255, 0.03) !important;
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    
+    /* Тонкая, едва заметная графитовая рамка как на референсе */
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    
+    /* Приглушаем цвет самого текста до мягкого печатного серого оттенка */
+    color: #888893 !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.2px !important;
+    
+    padding: 6px 14px !important; /* Пропорциональные Web3 отступы капсулы */
+    border-radius: 30px !important; /* Идеальное овальное скругление */
+    
+    text-shadow: none !important;
+    box-shadow: none !important; /* Намертво стираем любые прошлые бирюзовые свечения */
+    text-transform: none !important; /* Убираем капс, если он был */
+    transition: all 0.3s ease !important;
+    
+    /* Небольшой зазор от логотипа CREKED */
+    margin-left: 15px !important;
+}
+
+/* Ховер-эффект: при наведении капсула аккуратно и дорого приподнимает яркость */
+.status-badge:hover {
+    border-color: rgba(255, 255, 255, 0.15) !important;
     color: #ffffff !important;
-    padding: 4px 12px !important;
+}
+
+/* НАСТРОЙКА ТОЙ САМОЙ БЛАГОРОДНОЙ ЗЕЛЕНОЙ ТОЧКИ */
+.status-dot,
+[class*="status-dot"] {
+    width: 6px !important;
+    height: 6px !important;
+    background-color: #a3b899 !important; /* Наш дорогой оливково-зеленый хаки из референса */
+    border-radius: 50% !important;
+    display: inline-block !important;
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    box-shadow: none !important; /* Убираем старое кислотное мерцание */
+}
+/* ==========================================================================
+   ЖЕЛЕЗОБЕТОННЫЙ ПЕРЕКРАС ЛОГОТИПА ПО УНИКАЛЬНОМУ ID
+   ========================================================================== */
+
+/* Базовое премиальное состояние логотипа со старта */
+#premiumSpaLogo {
+    color: #ffffff !important; /* Насильно делаем шрифт дорогим белым цветом */
+    text-transform: uppercase !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.5px !important;
+    text-decoration: none !important;
+    text-shadow: none !important;
+    box-shadow: none !important; /* Намертво выжигаем бирюзовый неон! */
+    background: transparent !important;
+    display: inline-block !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Мягкий оливковый Web3-ховер при наведении курсора */
+#premiumSpaLogo:hover {
+    color: #a3b899 !important; /* Плавно перекрашиваем буквы в оливковый хаки */
+    text-shadow: 0 0 15px rgba(163, 184, 153, 0.35) !important; /* Нежная дымка */
+    background: transparent !important;
+}
+/* ==========================================================================
+   ДИНАМИЧНЫЙ ИНТЕРФЕЙСНЫЙ РЕДИЗАЙН СЕКЦИИ BIO (ИСПРАВЛЕННЫЙ)
+   ========================================================================== */
+
+/* Очищаем бэкграунд секции от старых цветных пятен */
+.bio-section {
+    background-image: none !important;
+    background-color: #0d0d0f !important;
+    background: #0d0d0f !important;
+    position: relative !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    padding: 100px 0 !important; /* Даем воздуху секции раскрыться */
+}
+
+.bio-section .section-title {
+    font-size: 32px !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.5px !important;
+    text-transform: uppercase !important;
+    color: #ffffff !important;
+}
+
+/* КАРТОЧКИ СТАТИСТИКИ С ПЛАВНОЙ КИНЕТИКОЙ */
+.bio-section .stats-container {
+    display: flex !important;
+    gap: 24px !important; /* Чуть увеличиваем зазор для воздуха */
+    margin-top: 50px !important;
+    margin-bottom: 60px !important;
+}
+
+.bio-section .stat-item {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important; /* Изначально тонкий матовый контур */
+    border-radius: 14px !important;
+    padding: 35px 25px !important;
+    flex: 1 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    /* Вязкая, дорогая анимация ховера */
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* КИНЕТИЧЕСКИЙ ХОВЕР: Полностью уничтожаем бирюзу! Рамка дорого наливается оливковым цветом */
+.bio-section .stat-item:hover {
+    border-color: rgba(163, 184, 153, 0.4) !important; /* Оливковый контур хаки */
+    background: rgba(163, 184, 153, 0.02) !important;  /* Едва заметный внутренний тон */
+    transform: translateY(-3px) !important; /* Карточка плавно "всплывает" к руке */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* НАМЕРТВО КРАСИМ ВСЕ ТРИ ЦИФРЫ В ОЛИВКОВЫЙ ХАКИ С ОДИНАКОВЫМ НАЧЕРТАНИЕМ */
+.bio-section .stat-item .stat-number {
+    color: #a3b899 !important; /* Наш фирменный зеленый цвет из шапки и кнопок */
+    background: transparent !important;
+    background-image: none !important; /* Смываем бирюзовые градиенты */
+    -webkit-text-fill-color: #a3b899 !important;
+    font-size: 54px !important; /* Чуть крупнее и массивнее */
+    font-weight: 700 !important;
+    letter-spacing: -1.5px !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    display: block !important;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Микро-динамика: при наведении на карточку сама цифра внутри тоже плавно тянется вверх */
+.bio-section .stat-item:hover .stat-number {
+    transform: scale(1.02) !important;
+}
+
+/* Текст подписей под цифрами */
+.bio-section .stat-text {
+    color: #6e6e73 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    margin-top: 15px !important;
+    line-height: 1.4 !important;
+}
+
+/* 5. УВЕЛИЧИВАЕМ ДИНАМИКУ И ЧИТАЕМОСТЬ ОСНОВНОГО ТЕКСТА ОПИСАНИЯ */
+.bio-section p:not(.stat-text) {
+    font-size: 15px !important;
+    line-height: 1.8 !important; /* Увеличиваем межстрочный интервал для легкого журнального чтения */
+    color: #98989f !important;
+    max-width: 720px !important;
+}
+
+/* Контрастное выделение ключевых слов белым цветом */
+.bio-section strong,
+.bio-section b {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.2px !important;
+}
+/* ==========================================================================
+   ФИНАЛЬНЫЙ ПЕРЕКРАС БОЛЬШОГО ВНЕШНЕГО КОНТУРА КАРТОЧЕК BIO
+   ========================================================================== */
+
+/* Находим большую общую рамку-капсулу, в которой лежат три карточки */
+.bio-section .stats-container,
+.bio-section .bio-stats-capsule,
+[class*="stats-container"],
+[class*="stats-capsule"] {
+    /* Намертво выжигаем бирюзовый неон и красим в тонкую оливковую рамку хаки */
+    border: 1px solid rgba(163, 184, 153, 0.12) !important; /* Очень нежный, благородный зеленый контур */
+    border-color: rgba(163, 184, 153, 0.12) !important;
+    
+    background: rgba(255, 255, 255, 0.01) !important; /* Делаем подложку капсулы глубокой и матовой */
+    border-radius: 20px !important; /* Удерживаем аккуратное скругление общего блока */
+    padding: 12px !important; /* Создаем аккуратный воздушный зазор вокруг внутренних карточек */
+    
+    box-shadow: none !important;
+    text-shadow: none !important; /* Полностью стираем старые бирюзовые тени */
+    transition: border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Мягкий интерактивный отклик: большая внешняя рамка деликатно подсвечивается, когда мышка заходит в эту зону */
+.bio-section .stats-container:hover,
+.bio-section .bio-stats-capsule:hover {
+    border-color: rgba(163, 184, 153, 0.25) !important;
+}
+/* ==========================================================================
+   УЛЬТИМАТИВНЫЙ ПРЕМИАЛЬНЫЙ РЕДИЗАЙН СЕКЦИИ ПОРТФОЛИО
+   ========================================================================== */
+
+/* 1. Общий фон секции приводим к нашему глубокому Web3-графиту */
+.portfolio-section, 
+#portfolio, 
+.portfolio-grid-container {
+    background-image: none !important;
+    background-color: #0d0d0f !important;
+    background: #0d0d0f !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important; /* Тонкая печатная линия */
+}
+
+/* Заголовок ПОРТФОЛИО делаем журнальным и строгим */
+.portfolio-section h2,
+.portfolio-section .section-title {
+    font-size: 32px !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.5px !important;
+    text-transform: uppercase !important;
+    color: #ffffff !important;
+}
+
+/* 2. РЕДИЗАЙН КНОПОК ФИЛЬТРОВ (ПЕРЕХОД ОТ БИРЮЗЫ К ОЛИВКОВОЙ КАПСУЛЕ) */
+.portfolio-filters, 
+.filter-buttons-row {
+    display: flex !important;
+    gap: 10px !important;
+    margin-bottom: 40px !important;
+}
+
+/* Общий стиль для всех кнопок фильтрации */
+.portfolio-filters .filter-btn,
+.portfolio-filters button {
+    background: rgba(255, 255, 255, 0.02) !important; /* Тонкая матовая основа */
+    border: 1px solid rgba(255, 255, 255, 0.06) !important; /* Едва заметный контур */
+    color: #888893 !important; /* Неактивные вкладки приглушаем */
+    padding: 10px 22px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: none !important; /* Убираем капс, если он был */
+    border-radius: 30px !important; /* Скругление в аккуратные капсулы */
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    cursor: pointer;
+}
+/* Ховер неактивных кнопок: контур плавно белеет */
+.portfolio-filters .filter-btn:hover,
+.portfolio-filters button:hover {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+}
+
+/* СТИЛИЗАЦИЯ ДЛЯ АКТИВНОЙ ВЫБРАННОЙ ВКЛАДКИ (НАПРИМЕР, ПОСЛЕДНИЕ РАБОТЫ) */
+.portfolio-filters .filter-btn.active,
+.portfolio-filters button.active,
+.portfolio-filters .filter-btn[class*="active"] {
+    background: rgba(163, 184, 153, 0.12) !important; /* Наша фирменная оливковая подложка хаки */
+    border: 1px solid rgba(163, 184, 153, 0.4) !important; /* Тонкий зеленый контур вокруг вкладки */
+    color: #a3b899 !important; /* Буквы строго в цвет кнопок сайта */
+    box-shadow: 0 0 12px rgba(163, 184, 153, 0.2) !important; /* Деликатный интерьерный свет */
+}
+
+/* 3. ДОРОГИЕ И СТРОГИЕ КАРТОЧКИ ВИДЕОРОЛИКОВ */
+.grid .card,
+.portfolio-grid .portfolio-item {
+    background: rgba(255, 255, 255, 0.01) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important; /* Тончайшая Web3-рамка */
+    border-radius: 14px !important; /* Элегантное строгое скругление */
+    padding: 16px !important; /* Воздушный зазор внутри карточки */
+    box-shadow: none !important;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* КИНЕТИЧЕСКИЙ ХОВЕР: Карточка плавно оживает, убирая любые бирюзовые отсветы */
+.grid .card:hover,
+.portfolio-grid .portfolio-item:hover {
+    border-color: rgba(163, 184, 153, 0.35) !important; /* Рамка наливается оливковым светом */
+    background: rgba(163, 184, 153, 0.02) !important;
+    transform: translateY(-4px) !important; /* Мягкое всплытие вверх */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Закругляем превью-обложки видео, чтобы они повторяли форму карточки */
+.card .preview-container,
+.card .card-preview,
+[class*="preview"] {
+    border-radius: 8px !important;
+}
+
+/* 4. ТОТАЛЬНОЕ УНИЧТОЖЕНИЕ ЯДОВИТО-РОЗОВЫХ БЭДЖЕЙ КАТЕГОРИЙ */
+.card .badge,
+.portfolio-item .category-tag,
+[class*="card"] [class*="badge"] {
+    background: rgba(163, 184, 153, 0.1) !important; /* Переводим бэдж в прозрачно-оливковую гамму */
+    border: 1px solid rgba(163, 184, 153, 0.25) !important;
+    color: #a3b899 !important; /* Буквы бэджа становятся нежно-зелеными */
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    padding: 4px 10px !important;
+    border-radius: 4px !important;
+    display: inline-block !important;
+    margin-bottom: 12px !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+/* 5. КОРРЕКТИРУЕМ ТЕКСТА ОПИСАНИЙ ВНУТРИ КАРТОЧЕК */
+.card h3, .portfolio-item h3 {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important; /* Заголовки роликов делаем контрастными белыми */
+    margin-top: 5px !important;
+    margin-bottom: 8px !important;
+}
+
+.card p, .portfolio-item p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    color: #6e6e73 !important; /* Описание роликов делаем мягким печатным серым цветом */
+}
+
+/* 6. ОЛИВКОВОЕ СВЕЧЕНИЕ ИКОНКИ PLAY ПРИ НАВЕДЕНИИ НА КАРТОЧКУ */
+.card:hover [class*="play"],
+.portfolio-item:hover [class*="play"],
+.card:hover .play-btn {
+    background-color: #a3b899 !important; /* Кнопка Play сочно загорается оливковым цветом */
+    color: #0d0d0f !important;
+    box-shadow: 0 0 15px rgba(163, 184, 153, 0.4) !important;
+}
+/* ==========================================================================
+   УЛЬТИМАТИВНЫЙ ДИЗАЙН ИКОНКИ PLAY С НУЛЯ (ИЗОЛИРОВАННЫЙ КЛАСС)
+   ========================================================================== */
+
+/* 1. Базовое состояние круглой кнопки Play по центру обложки */
+.premium-spa-play {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(1) !important;
+    
+    width: 52px !important;
+    height: 52px !important;
+    background: rgba(255, 255, 255, 0.12) !important; /* Мягкая матовая подложка */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Тонкий изящный контур */
+    border-radius: 50% !important; /* Жестко удерживаем круг, никаких квадратов! */
+    
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 10 !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* 2. НАСТОЯЩИЙ ЧЁТКИЙ ГЕОМЕТРИЧЕСКИЙ ТРЕУГОЛЬНИК ВНУТРИ КРУГА ЧЕРЕЗ CSS borders */
+.premium-spa-play::before {
+    content: '' !important;
+    display: block !important;
+    position: relative !important;
+    left: 2px !important; /* Сдвиг вправо на 2 пикселя для идеальной оптической центровки стрелки */
+    
+    /* Создаем идеальный острый треугольник за счет скоса прозрачных рамок */
+    width: 0 !important;
+    height: 0 !important;
+    border-style: solid !important;
+    border-width: 8px 0 8px 14px !important; /* Пропорции киношного значка Play */
+    border-color: transparent transparent transparent #ffffff !important; /* Стрелочка изначально белая */
+    
+    background: transparent !important;
+    border-radius: 0% !important; /* Запрещаем треугольнику превращаться в комочек */
+    transition: border-color 0.3s ease !important;
+}
+
+/* 3. КИНЕТИЧЕСКИЙ ХОВЕР: Внутренний круг сочно зажигается оливковым хаки при наведении на КАРТОЧКУ */
+.grid .card:hover .premium-spa-play,
+.portfolio-grid .portfolio-item:hover .premium-spa-play {
+    background: #a3b899 !important; /* Наш дорогой зеленый цвет хаки */
+    background-color: #a3b899 !important;
+    border-color: #a3b899 !important;
+    
+    transform: translate(-50%, -50%) scale(1.05) !important; /* Легкое интерактивное увеличение при ховере */
+    /* Элегантное неоново-зеленое облако света вокруг кнопки Play для глубины */
+    box-shadow: 0 0 20px rgba(163, 184, 153, 0.5) !important;
+}
+
+/* В момент наведения на карточку треугольник плавно перекрашивается в глубокий графит */
+.grid .card:hover .premium-spa-play::before,
+.portfolio-grid .portfolio-item:hover .premium-spa-play::before {
+    border-color: transparent transparent transparent #0d0d0f !important; /* Стрелочка становится темной на зеленом диске */
+}
+/* ==========================================================================
+   УЛЬТИМАТИВНЫЙ РЕДИЗАЙН КНОПКИ РАСКРЫТИЯ И РАМКИ МОДАЛЬНОГО ОКНА
+   ========================================================================== */
+
+/* 1. ПОЛНОСТЬЮ ПЕРЕКРАШИВАЕМ КНОПКУ "ПОКАЗАТЬ ВСЕ РАБОТЫ / СКРЫТЬ РАБОТЫ" */
+.load-more-btn,
+.more-works-container button,
+[class*="load-more"] {
+    background: rgba(163, 184, 153, 0.05) !important; /* Легкая матовая прозрачно-зеленая основа */
+    border: 1px solid rgba(163, 184, 153, 0.25) !important; /* Тонкий оливковый контур хаки */
+    color: #a3b899 !important; /* Текст кнопки строго в цвет сайта */
+    
+    padding: 14px 34px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    border-radius: 40px !important; /* Удерживаем аккуратную форму капсулы */
+    
+    text-shadow: none !important;
+    box-shadow: none !important; /* Намертво выжигаем старое бирюзовое свечение! */
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Ховер-эффект: при наведении кнопка раскрытия сочно заливается оливковым цветом */
+.load-more-btn:hover,
+.more-works-container button:hover {
+    background: #a3b899 !important;
+    color: #0d0d0f !important; /* Буквы становятся темными на зеленом фоне */
+    box-shadow: 0 10px 25px rgba(163, 184, 153, 0.3) !important; /* Мягкий дорогой объемный свет */
+    transform: translateY(-1px) !important;
+}
+
+/* ==========================================================================
+   ИСПРАВЛЕНИЕ ХОВЕРА КНОПКИ РАСКРЫТИЯ (ТОТАЛЬНОЕ УНИЧТОЖЕНИЕ БИРЮЗЫ)
+   ========================================================================== */
+
+.load-more-btn:hover,
+.more-works-container button:hover,
+[class*="load-more"]:hover {
+    /* Намертво выжигаем любые старые бирюзовые и фиолетовые тени-свечения! */
+    box-shadow: 0 10px 25px rgba(163, 184, 153, 0.25) !important; /* Переводим свечение в мягкий оливковый тон */
+    text-shadow: none !important;
+    
+    /* Жестко перекрашиваем сам контур при наведении мыши */
+    border-color: #a3b899 !important;
+    background: #a3b899 !important;
+    background-color: #a3b899 !important;
+    color: #0d0d0f !important; /* Шрифт становится темным графитовым */
+}
+
+/* На всякий случай гасим анимацию свечения, если плагин добавлял ее через псевдоэлементы */
+.load-more-btn::before, .load-more-btn::after {
+    box-shadow: none !important;
+    background: transparent !important;
+}
+/* ==========================================================================
+   УЛЬТИМАТИВНЫЙ ФИКС МОДАЛЬНОГО ОКНА: КРЕСТИК В УГЛУ НА ВСЕХ КАРТОЧКАХ
+   ========================================================================== */
+
+/* 1. ГЕОМЕТРИЯ ОКНА И СТРАХОВОЧНЫЙ ЗАЗОР ПОД КРЕСТИК */
+.modal-content,
+#videoModal .modal-content {
+    background-color: #0d0d0f !important;
+    background: #0d0d0f !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important; /* Тонкий изящный Web3-контур */
+    border-radius: 16px !important;
+    position: relative !important; /* База для точных координат крестика */
+    
+    /* КРИТИЧЕСКИЙ ФИКС: Создаем принудительный зазор сверху под крестик, 
+       чтобы на обычных видео без кнопок До/После он не наползал на экран */
+    padding-top: 48px !important; 
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Корректируем: если у видео ЕСТЬ шапка с кнопками До/После, зазор сверху не нужен */
+.modal-content:has(.modal-header),
+#videoModal:has(.modal-header) .modal-content,
+.modal-content:has([id*="btn"]) {
+    padding-top: 0 !important;
+}
+
+/* Насильно скругляем нижние углы видеоплеера, чтобы они повторяли форму окна */
+.modal-content iframe, #video-player, #modalIframe, .video-container {
+    border: none !important;
+    outline: none !important;
+    border-bottom-left-radius: 16px !important;
+    border-bottom-right-radius: 16px !important;
+}
+
+/* 2. ШАПКА МОДАЛЬНОГО ОКНА (ЕСЛИ ОНА ЕСТЬ) */
+.modal-content .modal-header,
+#videoModal .modal-header,
+.modal-header {
+    background: rgba(255, 255, 255, 0.01) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    padding: 16px 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 48px !important; /* Фиксируем высоту шапки для совпадения зазоров */
+    box-sizing: border-box !important;
+}
+
+/* 3. ОЛИВКОВЫЕ ТУМБЛЕРЫ ДО / ПОСЛЕ */
+#btnBefore, #btnAfter,
+.modal-header button,
+[id*="btnBefore"], [id*="btnAfter"],
+.modal-content button {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: 1px solid transparent !important;
+    color: #888893 !important; /* Неактивные кнопки */
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    padding: 6px 18px !important;
     border-radius: 30px !important;
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.25) !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    margin: 0 6px !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
 }
 
+#btnBefore:hover, #btnAfter:hover {
+    color: #ffffff !important;
+}
+
+#btnBefore.active, #btnAfter.active,
+.modal-content button.active {
+    background: rgba(163, 184, 153, 0.12) !important;
+    border: 1px solid rgba(163, 184, 153, 0.4) !important;
+    color: #a3b899 !important;
+    -webkit-text-fill-color: #a3b899 !important;
+    box-shadow: 0 0 10px rgba(163, 184, 153, 0.2) !important;
+}
+
+/* 4. БРОНЕБОЙНАЯ ФИКСАЦИЯ КРЕСТИКА ЗАКРЫТИЯ В ВЕРХНЕМ ПРАВОМ УГЛУ ДЛЯ ВСЕХ ОКОН */
+.close-modal,
+#videoModal .close,
+.modal-header .close,
+.modal-content .close {
+    position: absolute !important;
+    /* Насильно крепим в правый верхний угол всей конструкции поп-апа */
+    top: 13px !important;
+    right: 20px !important;
+    transform: none !important;
+    
+    color: #888893 !important; /* Утонченный матовый серый цвет */
+    font-size: 22px !important;
+    font-weight: 300 !important;
+    line-height: 1 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 0.8 !important;
+    
+    border: none !important;
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 999999 !important; /* Поверх всех слоев и видео */
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+}
+
+.close-modal:hover, #videoModal .close:hover, .modal-content .close:hover {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+/* ==========================================================================
+   ОКОНЧАТЕЛЬНЫЙ ПЕЧАТНЫЙ РЕДИЗАЙН ОТЗЫВОВ (ЖЕСТКИЙ ФИКС ЦЕНТРОВКИ И ШИРИНЫ)
+   ========================================================================== */
+
+/* 1. ОБЩИЙ ФОН СЕКЦИИ С СФЕРОЙ СВЕЧЕНИЯ */
+.reviews-section,
+#reviews,
+section[class*="reviews"] {
+    background-color: #111114 !important; /* Матовый Web3-антрацит */
+    background: #111114 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.03) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+    padding: 100px 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    z-index: 1 !important;
+}
+
+/* Пульсирующая оливково-песочная сфера на фоне */
+.reviews-section::before,
+section[class*="reviews"]::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 800px !important;
+    height: 500px !important;
+    transform: translate(-50%, -50%) scale(1) !important;
+    background: radial-gradient(circle, rgba(163, 184, 153, 0.06) 0%, rgba(218, 195, 160, 0.02) 40%, transparent 70%) !important;
+    filter: blur(60px) !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+    animation: reviewsHtmlPulse 10s ease-in-out infinite alternate !important;
+}
+
+@keyframes reviewsHtmlPulse {
+    0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+}
+
+/* КРИТИЧЕСКИЙ ФИКС ЗАГОЛОВКА: вырываем его из общего флекс-потока и ставим по центру */
+.reviews-section .section-title,
+section[class*="reviews"] h2 {
+    width: 100% !important; /* Занимает всю ширину, заставляя карточки упасть под него */
+    flex: none !important;
+    font-size: 32px !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.5px !important;
+    text-transform: uppercase !important;
+    color: #ffffff !important;
+    margin-bottom: 50px !important;
+    text-align: center !important; /* Идеальное центрирование над карточками */
+}
+
+/* 2. ИСПРАВЛЕНИЕ КОНТЕЙНЕРА СЕТКИ (РАЗРЕШАЕМ МНОГОРЯДНОСТЬ И ВЫРАВНИВАЕМ ОТЗЫВЫ) */
+.reviews-section .reviews-container,
+.reviews-section .reviews-grid,
+.reviews-section .container,
+section[class*="reviews"] > div {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important; /* КРИТИЧЕСКИЙ ФИКС: позволяет заголовку и карточкам разделиться */
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 28px !important; /* Увеличиваем зазор для воздуха между карточками */
+    
+    width: 100% !important;
+    max-width: 1200px !important; /* Удерживаем в границах портфолио */
+    margin: 0 auto !important;
+    padding: 0 4% !important;
+    box-sizing: border-box !important;
+}
+
+/* 3. КАРТОЧКИ ОТЗЫВОВ (РАСПРАВЛЯЕМ ШИРИНУ И УБИРАЕМ СКЛЕЕННОСТЬ ТЕКСТА) */
+.reviews-section .review-card,
+.reviews-section .testimonial-item,
+section[class*="reviews"] [class*="card"],
+section[class*="reviews"] div[style*="border"] {
+    background: #0d0d0f !important; /* Глубокий Web3-графит */
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 14px !important;
+    
+    padding: 26px 24px !important;
+    min-height: 230px !important; 
+    /* Даем карточкам стать крупнее и комфортнее, убирая сжатие текста */
+    width: 320px !important;
+    max-width: 360px !important; 
+    flex: 1 1 300px !important; /* Позволяет карточкам эластично расширяться */
+    
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Кинетический оливковый ховер карточки */
+.reviews-section .review-card:hover,
+section[class*="reviews"] [class*="card"]:hover {
+    border-color: rgba(163, 184, 153, 0.35) !important;
+    transform: translateY(-4px) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Элементы текста внутри карточки */
+.reviews-section [class*="name"] { color: #ffffff !important; font-size: 14px !important; font-weight: 600 !important; }
+.reviews-section [class*="meta"] { color: #6e6e73 !important; font-size: 11px !important; }
+
+.reviews-section p, 
+section[class*="reviews"] p {
+    color: #98989f !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    font-style: italic !important;
+    margin: 15px 0 !important;
+}
+
+.reviews-section [class*="badge"],
+.reviews-section [class*="kwork"] {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #888893 !important;
+    font-size: 9px;
+    padding: 2px 7px !important;
+}
+
+/* ==========================================================================
+   ОКОНЧАТЕЛЬНЫЙ ПЕРЕКРАС ДИНАМИЧЕСКОЙ КНОПКИ ОТЗЫВОВ ИЗ JS
+   ========================================================================== */
+
+/* Жестко перехватываем управление у твоего JS-класса кнопки и убираем бирюзу */
+.reviews-section .review-work-btn,
+#reviews .review-work-btn,
+section[class*="reviews"] .review-work-btn,
+[class*="review"] .review-work-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: max-content !important;
+    
+    /* Оформляем аккуратную прозрачно-оливковую подложку капсулы */
+    background: rgba(163, 184, 153, 0.06) !important;
+    background-color: rgba(163, 184, 153, 0.06) !important;
+    border: 1px solid rgba(163, 184, 153, 0.25) !important; /* Тонкий зеленый контур */
+    
+    /* Насильно красим буквы в наш фирменный благородный оливково-зеленый хаки */
+    color: #a3b899 !important;
+    -webkit-text-fill-color: #a3b899 !important; /* Пробиваем внутренние маски шрифтов */
+    
+    padding: 8px 18px !important; /* Пропорции дорогой премиальной микрокнопки */
+    border-radius: 30px !important; /* Намертво скругляем края в овал */
+    
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    
+    box-shadow: none !important;
+    text-shadow: none !important; /* Полностью выжигаем старый бирюзовый неон */
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    cursor: pointer !important;
+}
+
+/* КИНЕТИЧЕСКИЙ ХОВЕР: при наведении оливковая капсула наливается плотным цветом хаки */
+.reviews-section .stat-item:hover .review-work-btn,
+.reviews-section .review-card:hover .review-work-btn,
+section[class*="reviews"] [class*="card"]:hover .review-work-btn,
+.review-work-btn:hover {
+    background: #a3b899 !important;
+    background-color: #a3b899 !important;
+    border-color: #a3b899 !important;
+    
+    color: #0d0d0f !important; /* Шрифт становится контрастным темным графитом */
+    -webkit-text-fill-color: #0d0d0f !important;
+    box-shadow: 0 5px 15px rgba(163, 184, 153, 0.3) !important; /* Нежное воздушное свечение */
+}
+
+/* ТОТАЛЬНОЕ УНИЧТОЖЕНИЕ РОЗОВОГО ЦВЕТА ИКОНКИ-ПАПКИ ИЗ JS innerHTML */
+.reviews-section .review-work-btn i,
+.reviews-section .review-work-btn svg,
+[class*="review"] .review-work-btn img,
+[class*="review"] .review-work-btn span {
+    color: inherit !important; /* Иконка автоматически принимает оливковый цвет букв */
+    -webkit-text-fill-color: initial !important;
+    font-size: 11px !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ховер микрокнопки */
+.reviews-section a:hover,
+section[class*="reviews"] a:hover {
+    background: #a3b899 !important;
+    background-color: #a3b899 !important;
+    border-color: #a3b899 !important;
+    color: #0d0d0f !important;
+    -webkit-text-fill-color: #0d0d0f !important;
+    box-shadow: 0 5px 15px rgba(163, 184, 153, 0.3) !important;
+}
+
+/* Иконка-папка наследует новые оливковые цвета кнопок */
+.reviews-section a i,
+.reviews-section a svg,
+section[class*="reviews"] a i {
+    color: inherit !important;
+    font-size: 11px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    margin: 0 !important;
+}
+
+/* АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ ЭКРАНЫ */
+@media screen and (max-width: 768px) {
+    .reviews-section .reviews-container,
+    .reviews-section .reviews-grid,
+    section[class*="reviews"] > div {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+    .reviews-section .review-card,
+    section[class*="reviews"] [class*="card"] {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+}
+/* ==========================================================================
+   ЭКСПЕРИМЕНТАЛЬНЫЙ WEB3-РЕДИЗАЙН КОНТАКТОВ ПО РОДНОЙ СТРУКТУРЕ FOOTER
+   ========================================================================== */
+
+/* 1. ОБЩИЙ ФОН СЕКЦИИ И ЗЕРКАЛЬНАЯ СФЕРА СВЕЧЕНИЯ */
+footer#contact,
+#contact {
+    background-image: none !important;
+    background-color: #0d0d0f !important; /* Глубокий Web3-графит */
+    background: #0d0d0f !important;
+    padding: 100px 0 60px !important;
+    position: relative !important;
+    overflow: hidden !important; /* Срезаем края гигантской сферы */
+    z-index: 1 !important;
+    border: none !important; /* Убираем любые резкие полосы */
+}
+
+/* Оливково-песочная сфера на бэкграунде подвала */
+footer#contact::after,
+#contact::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -450px !important;
+    right: -350px !important;
+    width: 1500px !important;
+    height: 1200px !important;
+    background: radial-gradient(circle, rgba(218, 195, 160, 0.22) 0%, rgba(218, 195, 160, 0.08) 40%, transparent 70%) !important;
+    filter: blur(55px) !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+    animation: contactPremiumPulse 11s ease-in-out infinite alternate !important;
+}
+
+@keyframes contactPremiumPulse {
+    0% { transform: scale(0.96); opacity: 0.7; }
+    100% { transform: scale(1.04); opacity: 1; }
+}
+
+/* На заголовок и подпись ставим журнальные Web3-стили */
+footer#contact .footer-title {
+    font-size: 32px !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.5px !important;
+    text-transform: uppercase !important;
+    color: #ffffff !important;
+    margin-bottom: 15px !important;
+}
+
+footer#contact .order-notice {
+    color: #6e6e73 !important; /* Мягкий печатный серый */
+    font-size: 14px !important;
+    margin-bottom: 35px !important;
+}
+
+/* 2. ТРАНСФОРМАЦИЯ ГЛАВНОЙ КНОПКИ ДИСКОРДА В ДОРОГУЮ ОЛИВКОВУЮ КАПСУЛУ */
+footer#contact .main-ds-btn,
+footer#contact a[class*="main-ds-btn"] {
+    display: inline-block !important;
+    background: rgba(163, 184, 153, 0.06) !important; /* Полупрозрачная оливковая основа хаки */
+    border: 1px solid rgba(163, 184, 153, 0.25) !important; /* Тонкий зеленый контур */
+    color: #a3b899 !important; /* Насильно красим текст в оливковый цвет */
+    -webkit-text-fill-color: #a3b899 !important;
+    
+    padding: 16px 42px !important; /* Массивные премиальные отступы кнопки */
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    border-radius: 40px !important; /* Скругление в идеальный овал */
+    
+    box-shadow: none !important;
+    text-shadow: none !important; /* Намертво сжигаем старый бирюзовый неон */
+    transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* ХОВЕР КНОПКИ ДИСКОРДА: вязко заливается цветом хаки, выталкивая текст */
+footer#contact .main-ds-btn:hover {
+    background: #a3b899 !important;
+    background-color: #a3b899 !important;
+    border-color: #a3b899 !important;
+    color: #0d0d0f !important; /* Буквы становятся темными на зеленом диске */
+    -webkit-text-fill-color: #0d0d0f !important;
+    box-shadow: 0 12px 30px rgba(163, 184, 153, 0.35) !important; /* Мягкое неоново-зеленое облако света */
+    transform: translateY(-2px) !important; /* Мягкое всплытие к руке */
+}
+
+/* 3. ТЕКСТ ДРУГИЕ СПОСОБЫ СВЯЗИ */
+footer#contact .footer-desc {
+    color: #44444a !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    margin-top: 45px !important;
+    margin-bottom: 25px !important;
+}
+
+/* СТИЛИЗАЦИЯ НИЖНИХ МИКРОКАПСУЛ (Telegram, Kwork, YouTube) */
+footer#contact .social-links a,
+footer#contact .social-btn {
+    background: rgba(255, 255, 255, 0.02) !important; /* Матовая темная подложка */
+    border: 1px solid rgba(255, 255, 255, 0.06) !important; /* Тончайший изящный контур */
+    color: #888893 !important; /* Буквы приглушаем до печатного серого */
+    -webkit-text-fill-color: #888893 !important;
+    
+    padding: 10px 22px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: none !important; /* Убираем капс, делая буквы аккуратными */
+    text-decoration: none !important;
+    border-radius: 30px !important; /* Скругление в аккуратные микрокапсулы */
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* ХОВЕР НИЖНИХ КНОПОК: контур дорого белеет, а текст загорается белым */
+footer#contact .social-links a:hover,
+footer#contact .social-btn:hover {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    transform: translateY(-1px) !important;
+}
+
+/* ПОДВАЛ И КОПИРАЙТ */
+footer#contact .copy {
+    color: #333339 !important; /* Уводим копирайт в глубокую тень */
+    font-size: 11px !important;
+    letter-spacing: 0.5px !important;
+    margin-top: 50px !important;
+}
+/* ==========================================================================
+   ФИНАЛЬНЫЙ БЕЗБАГОВЫЙ ПЕРЕКРАС КНОПКИ НАВЕРХ (РАЗРУШЕНИЕ КВАДРАТА)
+   ========================================================================== */
+
+/* Жестко перехватываем управление у ID и класса одновременно */
+#scrollTopBtn,
+.back-to-top {
+    position: fixed !important;
+    bottom: 25px !important;
+    right: 25px !important;
+    
+    /* ИДЕАЛЬНЫЙ КРУГ: Сбрасываем старые квадратные рамки плагина */
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 50% !important; /* Намертво скругляем углы в круг! */
+    
+    /* Мягкая матовая подложка и тонкий оливковый контур хаки */
+    background: rgba(255, 255, 255, 0.02) !important;
+    background-color: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(163, 184, 153, 0.3) !important;
+    border-color: rgba(163, 184, 153, 0.3) !important;
+    
+    /* ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ ТЕКСТОВОГО СИМВОЛА ТРЕУГОЛЬНИКА */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    /* Смываем старые высоты строк, ломавшие геометрию */
+    line-height: 1 !important; 
+    text-indent: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    
+    color: #a3b899 !important; /* Сам треугольник изначально оливково-зеленый */
+    font-size: 14px !important; /* Опрятный журнальный размер стрелочки */
+    
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+    z-index: 99999 !important; /* Поверх всех слоев сайта */
+    cursor: pointer !important;
+    
+    /* Вязкая премиальная Web3 анимация перехода */
+    transition: background 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                border-color 0.3s ease, 
+                color 0.3s ease, 
+                transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                box-shadow 0.3s ease !important;
+}
+
+/* БРОНЕБОЙНЫЙ КИНЕТИЧЕСКИЙ ХОВЕР: Круг сочно наливается плотным цветом хаки */
+#scrollTopBtn:hover,
+.back-to-top:hover {
+    background: #a3b899 !important;
+    background-color: #a3b899 !important;
+    border-color: #a3b899 !important;
+    
+    /* Символ треугольника ▲ внутри круга становится контрастным темным графитом */
+    color: #0d0d0f !important;
+    -webkit-text-fill-color: #0d0d0f !important;
+    
+    /* Роскошное объемное облако мягкого оливкового света вокруг кнопки */
+    box-shadow: 0 0 20px rgba(163, 184, 153, 0.5) !important;
+    transform: translateY(-3px) !important; /* Мягкое тактильное всплытие навстречу курсору */
+}
+/* ==========================================================================
+   УЛЬТИМАТИВНЫЙ БРОНЕБОЙНЫЙ МЕДИА-ЗАПРОС ДЛЯ СМАРТФОНОВ (СТРОГО ДО 768px)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+
+    /* 1. ГЛАВНЫЙ ЭКРАН (HERO SECTION) */
+    .hero-section, #about {
+        padding: 100px 20px 40px !important; /* Уменьшаем отступы, чтобы контент не зажимался по бокам */
+    }
+    
+    .main-title {
+        font-size: 38px !important; /* Аккуратный, читаемый мобильный размер заголовка */
+        line-height: 1.2 !important;
+        letter-spacing: -0.5px !important;
+    }
+    
+    .hero-desc {
+        font-size: 13px !important;
+        padding: 0 10px !important;
+    }
+
+    .btn-group-left {
+        flex-direction: column !important; /* Кнопки встают друг под друга */
+        gap: 12px !important;
+        width: 100% !important;
+        max-width: 340px;
+        margin: 0 auto !important;
+    }
+    
+    .btn-premium-text, 
+    .btn-premium-outline {
+        width: 100% !important; /* Кнопки растягиваются на всю ширину экрана смартфона */
+        text-align: center !important;
+        padding: 14px 24px !important;
+    }
+
+    /* 2. СЕКЦИЯ "ОБО МНЕ" (BIO / STATS) */
+    .bio-section .stats-container,
+    .bio-section .bio-stats-capsule,
+    [class*="stats-container"] {
+        flex-direction: column !important; /* Выстраиваем плашки 3+, 100%, 0% вертикально */
+        gap: 16px !important;
+        padding: 8px !important;
+        border: none !important; /* Убираем громоздкую внешнюю обводку на мобилках */
+        background: transparent !important;
+    }
+
+    .bio-section .stat-item,
+    [class*="stat-item"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 24px 20px !important;
+    }
+    
+    .bio-section .stat-item .stat-number {
+        font-size: 44px !important; /* Чуть уменьшаем цифры для мобильных дисплеев */
+    }
+    /* ИСПРАВЛЕНИЕ МОБИЛЬНОГО ТЕКСТА ОБО МНЕ (РАЗЖАТИЕ БУКВ) */
+    .bio-section p:not(.stat-text),
+    .bio-section .bio-text,
+    .bio-section .about-text-block,
+    [class*="bio"] p {
+        width: 100% !important; /* Разрешаем тексту занять всю ширину экрана */
+        max-width: 100% !important;
+        padding: 0 10px !important; /* Убираем гигантские боковые отступы, оставляя аккуратные зазоры */
+        box-sizing: border-box !important;
+        text-align: left !important; /* Делаем выравнивание по левому краю для удобного чтения */
+        font-size: 14px !important; /* Оптимальный мобильный размер шрифта */
+        line-height: 1.6 !important;
+        margin-top: 25px !important;
+    }
+
+    /* 3. СЕКЦИЯ ПОРТФОЛИО */
+    .portfolio-filters, 
+    .filter-buttons-row {
+        flex-wrap: wrap !important; /* Разрешаем кнопкам фильтров переноситься на вторую строку */
+        justify-content: center !important;
+        gap: 8px !important;
+    }
+    
+    /* УВЕЛИЧИВАЕМ МОБИЛЬНЫЕ КНОПКИ ФИЛЬТРОВ ПОД ПАЛЕЦ РУКИ */
+    .portfolio-filters .filter-btn,
+    .portfolio-filters button,
+    [class*="portfolio-filters"] button,
+    [class*="filter-btn"] {
+        width: 100% !important; /* Кнопки растягиваются во всю ширину, чтобы по ним было легко попасть */
+        max-width: 340px !important; /* Удерживаем аккуратную ширину по центру */
+        margin: 0 auto !important;
+        padding: 14px 24px !important; /* Увеличиваем высоту (14px) под идеальный тап пальцем */
+        font-size: 12px !important; /* Делаем шрифт чуть крупнее и читаемее */
+        font-weight: 700 !important;
+        letter-spacing: 0.3px !important;
+        border-radius: 40px !important; /* Сохраняем идеальную овальную капсулу при увеличении */
+    }
+
+    /* Исправляем сетку карточек портфолио */
+    .grid,
+    .portfolio-grid,
+    [class*="portfolio-grid"] {
+        flex-direction: column !important; /* Насильно выстраиваем видеокарточки в один ряд */
+        align-items: center !important;
+        gap: 24px !important;
+        width: 100% !important;
+    }
+
+    .grid .card,
+    .portfolio-grid .portfolio-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 4. СЕКЦИЯ ОТЗЫВОВ */
+    .reviews-section .reviews-container,
+    .reviews-section .reviews-grid,
+    section[class*="reviews"] > div {
+        flex-direction: column !important; /* Отзывы встают друг под друга */
+        align-items: center !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    .reviews-section .review-card,
+    section[class*="reviews"] [class*="card"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: auto !important; /* Сбрасываем фиксированную высоту для мобилок */
+    }
+
+    /* 5. ПОДВАЛ И КОНТАКТЫ */
+    footer#contact, 
+    #contact,
+    .footer-container {
+        padding: 60px 20px 40px !important;
+    }
+    
+    footer#contact .main-order-block a,
+    footer#contact .main-ds-btn {
+        width: 100% !important; /* Кнопка заказа в Discord на весь экран */
+        max-width: 340px;
+        text-align: center !important;
+        padding: 14px 24px !important;
+    }
+
+    /* Выравниваем нижние кнопки связи (Telegram, Kwork, YouTube) паровозиком */
+    footer#contact .social-links,
+    footer#contact [class*="social"] {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
+        width: 100% !important;
+        margin-top: 20px !important;
+    }
+
+    footer#contact .social-links a,
+    footer#contact .social-btn {
+        width: 100% !important;
+        max-width: 340px;
+        text-align: center !important;
+        padding: 10px 0 !important;
+    }
+        /* ==========================================================================
+       ФИКС МОБИЛЬНОГО БУРГЕР-МЕНЮ И ТУМБЛЕРА ЯЗЫКОВ
+       ========================================================================== */
+    
+    /* 1. УВЕЛИЧИВАЕМ ССЫЛКИ ВНУТРИ ОТКРЫТОГО БУРГЕР-МЕНЮ */
+    .nav-links,
+    [class*="mobile-menu"] a,
+    [class*="burger"] a {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 28px !important; /* Даем сочный, комфортный зазор между строками под палец */
+        margin-bottom: 40px !important;
+    }
+
+    .site-navigation .nav-links a,
+    [class*="mobile-menu"] a,
+    [class*="burger"] .nav-links a {
+        font-size: 20px !important; /* Увеличиваем шрифт ссылок в меню под мобильный формат */
+        font-weight: 500 !important;
+        letter-spacing: 0.5px !important;
+        color: #ffffff !important; /* Делаем ссылки яркими и читаемыми на темном фоне */
+    }
+
+    /* 2. ЖЕСТКО ВЫРАВНИВАЕМ И РАСПРАВЛЯЕМ ТУМБЛЕР ЯЗЫКОВ В ШТОРКЕ МЕНЮ */
+    .nav-links .new-spa-lang-container,
+    [class*="mobile-menu"] .new-spa-lang-container,
+    .new-spa-lang-container {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-left: 0 !important; /* Обнуляем десктопный отступ слева, центрируем в шторке */
+        margin: 0 auto !important;
+        
+        /* Задаем жесткую фиксированную ширину, чтобы флекс-боксы меню не сдавливали капсулу */
+        width: 110px !important; 
+        min-width: 110px !important;
+        box-sizing: border-box !important;
+        padding: 4px 6px !important;
+    }
+
+    /* Корректируем размеры кнопок RU / ENG внутри мобильного тумблера */
+    .new-spa-lang-container .spa-lang-btn {
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        padding: 5px 12px !important;
+        flex: 1 !important;
+        text-align: center !important;
+    }
+
+    /* Насильно центрируем оливковый бегунок на мобилках вокруг активного языка */
+    .page-toggle-ru .box-slider,
+    .new-spa-lang-container .spa-lang-btn.active {
+        /* Удерживаем точные пропорции, чтобы бегунок не съезжал вбок */
+        height: calc(100% - 8px) !important;
+        top: 4px !important;
+    }
+/* ==========================================================================
+   КОМПАКТНЫЙ СТИЛЬ ТУМБЛЕРА НА МОБИЛКАХ (ИДЕАЛЬНОЕ ВЫРАВНИВАНИЕ БЕЗ СЪЕЗЖАНИЯ)
+   ========================================================================== */
+
+/* Скрываем разделительный слэш на смартфонах, чтобы он не выталкивал буквы вниз */
+.new-spa-lang-container .spa-lang-divider {
+    display: none !important;
+}
+
+.new-spa-lang-container .spa-lang-btn {
+    width: 44px !important; /* Делаем кнопочки аккуратными и компактными */
+    text-align: center !important;
+    padding: 0 !important; /* Сбрасываем паддинги */
+    height: 24px !important; /* Задаем фиксированную высоту */
+    line-height: 24px !important; /* Намертво центрируем буквы строго по вертикали! */
+    display: inline-block !important;
+    vertical-align: middle !important;
+    box-sizing: border-box !important;
+}
+
+/* Наш компактный оливковый бегунок-таблетка */
+.new-spa-lang-container .spa-lang-btn.active,
+.new-spa-lang-container [class*="active"] {
+    background: rgba(163, 184, 153, 0.14) !important;
+    border: 1px solid rgba(163, 184, 153, 0.5) !important;
+    color: #a3b899 !important;
+    -webkit-text-fill-color: #a3b899 !important;
+    border-radius: 20px !important;
+    box-shadow: 0 0 10px rgba(163, 184, 153, 0.25) !important;
+    height: 24px !important;
+    line-height: 22px !important; /* Ювелирная подгонка рамки под буквы */
+}
+    /* ==========================================================================
+       УВЕЛИЧЕНИЕ КНОПКИ НАВЕРХ ДЛЯ МОБИЛЬНЫХ ЭКРАНОВ
+       ========================================================================== */
+    #scrollTopBtn,
+    .back-to-top,
+    [class*="back-to-top"] {
+        width: 54px !important;  /* Раздуваем диаметр круга под удобный тап пальцем */
+        height: 54px !important;
+        bottom: 20px !important;  /* Слегка корректируем положение в углу экрана */
+        right: 20px !important;
+        font-size: 16px !important; /* Увеличиваем сам текстовый треугольник ▲ внутри */
+        
+        /* Удерживаем жесткое выравнивание по центру */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        line-height: 1 !important;
+        border-radius: 50% !important;
+    }
+
+    /* Скрываем кастомную сферу на мобилках, чтобы она не растягивала ширину страницы */
+    .premium-spa-sphere {
+        display: none !important;
+    }
 }
