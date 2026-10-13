@@ -1501,4 +1501,56 @@ footer#contact {
         width: 100% !important;
         text-align: center !important;
     }
+    /* ==========================================================================
+   РЕДИЗАЙН. БЛОК 1: ФОНОВАЯ СЕТКА ЛИНИЙ И МИНИМАЛИСТИЧНАЯ ШАПКА
+   ========================================================================== */
+
+/* Обновляем глубокий фоновый цвет сайта */
+body {
+    background-color: #0d0d0f !important;
+    color: #efeff1 !important;
+}
+
+/* Настраиваем те самые тонкие линии (Grid Lines) по бокам сайта, как на макете */
+body::before {
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important; left: 10% !important; right: 10% !important; bottom: 0 !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.03) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.03) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+/* Делаем шапку полностью прозрачной с мягким размытием */
+.site-navigation {
+    background: transparent !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    padding: 24px 10% !important;
+}
+
+/* Делаем ссылки в меню аккуратными, строгими маленькими буквами */
+.site-navigation .nav-links a {
+    color: #888893 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: none !important; /* Отключаем капс */
+}
+.site-navigation .nav-links a:hover {
+    color: #ffffff !important;
+}
+
+/* Переключатель языка RU / ENG превращаем в бирюзовую неоновую капсулу */
+.lang-switch-box .box-label.current-lang {
+    background: rgba(0, 240, 255, 0.12) !important;
+    border: 1px solid #00f0ff !important;
+    color: #ffffff !important;
+    padding: 4px 12px !important;
+    border-radius: 30px !important;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.25) !important;
+}
+
 }
