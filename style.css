@@ -3140,3 +3140,213 @@ footer#contact .copy {
         display: none !important;
     }
 }
+/* ==========================================================================
+   ПОЛНЫЙ И КРИСТАЛЬНО ЧИСТЫЙ КОД ИНТЕРАКТИВНОГО БЛОКА СОТРУДНИЧЕСТВА
+   ========================================================================== */
+
+/* 1. БАЗОВАЯ ГЕОМЕТРИЯ КОНТЕЙНЕРА */
+.footer-container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 4% !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+}
+
+/* ОФОРМЛЕНИЕ ШАПКИ НАВИГАЦИИ ТАБОВ (КАПСУЛА А-ЛЯ APPLE) */
+.coop-tabs-nav {
+    display: inline-flex !important;
+    align-items: center !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 4px !important;
+    border-radius: 40px !important;
+    gap: 4px !important;
+    margin-bottom: 50px !important;
+}
+
+.coop-tab-btn {
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    color: #888893 !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    padding: 10px 22px !important;
+    border-radius: 30px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+.coop-tab-btn svg { opacity: 0.6; transition: transform 0.3s ease; }
+.coop-tab-btn:hover { color: #ffffff !important; }
+.coop-tab-btn:hover svg { transform: scale(1.1); opacity: 1; }
+
+/* АКТИВНЫЙ ТАБ НАЛИВАЕТСЯ ОЛИВКОВЫМ СВЕЧЕНИЕМ */
+.coop-tab-btn.active {
+    background: rgba(163, 184, 153, 0.12) !important;
+    border: 1px solid rgba(163, 184, 153, 0.4) !important;
+    color: #a3b899 !important;
+    box-shadow: 0 0 12px rgba(163, 184, 153, 0.2) !important;
+}
+
+/* 2. ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ПАНЕЛЕЙ И iOS-БЛЁР */
+.coop-tab-panel {
+    display: none !important;
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.97) translateY(8px);
+    transition: opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+                filter 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.45s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* ФИКС СЕТОК: Возвращаем правильный многорядный тип вывода с центровкой */
+#tab-contacts.coop-tab-panel.active {
+    display: block !important;
+    opacity: 1; filter: blur(0); transform: scale(1) translateY(0);
+}
+#tab-process.coop-tab-panel.active,
+#tab-price.coop-tab-panel.active {
+    display: flex !important; 
+    flex-direction: row !important;
+    flex-wrap: wrap !important; /* КРИТИЧЕСКИЙ ФИКС: Позволяет тексту упасть под сетку карточек */
+    gap: 24px !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    opacity: 1; filter: blur(0); transform: scale(1) translateY(0);
+}
+
+/* 3. ЖИВОЕ ВОЛНОВОЕ ДЫХАНИЕ ВСЕХ КАРТОЧЕК СЕКЦИИ */
+.process-item,
+.price-card {
+    background: #0d0d0f !important; /* Возвращаем глубокий Web3-графит карточкам */
+    border: 1px solid rgba(255, 255, 255, 0.04) !important;
+    animation: premiumCoopBreath 8s ease-in-out infinite alternate !important;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+/* Смещаем фазы дыхания для создания эффекта волны */
+.process-item:nth-child(2), .price-card:nth-child(2) { animation-delay: 1.5s !important; }
+.process-item:nth-child(3), .price-card:nth-child(3) { animation-delay: 3s !important; }
+.process-item:nth-child(4) { animation-delay: 4.5s !important; }
+
+@keyframes premiumCoopBreath {
+    0% { border-color: rgba(255, 255, 255, 0.04); background: rgba(255, 255, 255, 0.015); }
+    100% { border-color: rgba(163, 184, 153, 0.12); background: rgba(255, 255, 255, 0.025); }
+}
+
+/* Стоп-анимация при наведении мыши + аккуратное всплытие вверх */
+.process-item:hover, .price-card:hover {
+    animation-play-state: paused !important;
+    border-color: rgba(163, 184, 153, 0.4) !important;
+    transform: translateY(-5px) !important;
+    background: rgba(163, 184, 153, 0.01) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 4. СТИЛИЗАЦИЯ ДЕТАЛЕЙ ПРОЦЕССА РАБОТЫ (ТАБ 2) */
+.process-grid { width: 100% !important; display: flex !important; gap: 24px !important; text-align: left !important; }
+.process-item { border-radius: 14px !important; padding: 30px 24px !important; flex: 1 1 240px !important; max-width: 280px !important; }
+.process-num { font-size: 20px !important; font-weight: 700 !important; color: #6e6e73 !important; display: block; margin-bottom: 12px; }
+.process-item h3 { font-size: 16px !important; color: #ffffff !important; margin-bottom: 10px !important; font-weight: 600 !important; }
+.process-item p { color: #98989f !important; font-size: 13px !important; line-height: 1.5 !important; }
+
+/* 5. СТИЛИЗАЦИЯ СТРУКТУРЫ ПРАЙС-ЛИСТА (ТАБ 3) */
+.price-grid { width: 100% !important; display: flex !important; gap: 24px !important; align-items: stretch !important; text-align: left !important; }
+.price-card { border-radius: 16px !important; padding: 30px 24px !important; flex: 1 1 300px !important; max-width: 360px !important; position: relative; display: flex !important; flex-direction: column !important; justify-content: space-between !important; }
+.price-card.popular { border-color: rgba(163, 184, 153, 0.3) !important; background: rgba(163, 184, 153, 0.01) !important; }
+
+.hot-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: #a3b899 !important; color: #0d0d0f !important;
+    font-size: 9px !important; font-weight: 800 !important; text-transform: uppercase;
+    padding: 4px 12px !important; border-radius: 20px !important; letter-spacing: 0.5px;
+}
+
+.price-header { display: flex !important; justify-content: space-between !important; align-items: center !important; color: #6e6e73 !important; margin-bottom: 20px; }
+.price-tag { font-size: 10px !important; font-weight: 700 !important; text-transform: uppercase; letter-spacing: 1px; background: rgba(255, 255, 255, 0.04) !important; padding: 4px 10px !important; border-radius: 4px !important; }
+.price-card h3 { font-size: 18px !important; color: #ffffff !important; margin-bottom: 10px !important; font-weight: 600 !important; }
+.price-card p { color: #98989f !important; font-size: 13px !important; line-height: 1.5 !important; margin-bottom: 25px !important; }
+.price-val { font-size: 26px !important; font-weight: 700 !important; color: #ffffff !important; margin-bottom: 25px !important; }
+.price-card.popular .price-val { color: #a3b899 !important; }
+.price-val span { font-size: 13px !important; color: #6e6e73 !important; font-weight: 400; }
+
+/* КНОПКИ ЗАКАЗА КАРТОЧЕК ПРАЙСА */
+.price-btn {
+    display: block !important; text-align: center !important;
+    background: rgba(255, 255, 255, 0.02) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important; padding: 12px 0 !important; border-radius: 30px !important;
+    font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase;
+    text-decoration: none !important; transition: all 0.3s ease !important;
+}
+.price-btn:hover { border-color: #ffffff !important; background: rgba(255, 255, 255, 0.04) !important; }
+.active-price { background: #a3b899 !important; border-color: #a3b899 !important; color: #0d0d0f !important; }
+.active-price:hover { background: #b5cbb1 !important; border-color: #b5cbb1 !important; }
+
+/* КРИТИЧЕСКИЙ ФИКС СНОСОК И ТЕКСТА: ВЫБРАСЫВАЕМ ИХ ИЗ ФЛЕКС-РЯДА И ЦЕНТРИРУЕМ СНИЗУ */
+.coop-tab-panel > p:not([class]), 
+.coop-note,
+#tab-price > p,
+#tab-process > div:not(.process-grid) {
+    width: 100% !important; /* Текст занимает всю ширину подвала */
+    flex: none !important;
+    display: inline-flex !important; 
+    align-items: center !important; 
+    justify-content: center !important;
+    gap: 6px !important;
+    color: #44444a !important; 
+    font-size: 11px !important; 
+    font-weight: 700 !important;
+    text-transform: uppercase !important; 
+    margin-top: 40px !important; 
+    letter-spacing: 0.5px !important;
+    text-align: center !important;
+}
+/* ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ НИЖНИХ КНОПОК СВЯЗИ */
+.social-links,
+[class*="social-links"],
+footer#contact .social-links {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important; /* Насильно выравниваем кнопки Telegram, Kwork, YouTube по центру */
+    align-items: center !important;
+    gap: 12px !important; /* Пропорциональный Web3 зазор между капсулами */
+    margin: 25px auto 0 !important;
+    width: 100% !important;
+}
+
+/* Центрируем текстовую надпись "Другие способы связи и платформы" */
+.footer-desc,
+[class*="footer-desc"],
+footer#contact .footer-desc {
+    display: block !important;
+    text-align: center !important; /* Текст встает строго по центру */
+    width: 100% !important;
+    margin-top: 45px !important;
+    color: #44444a !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+}
+
+/* 6. ДИРЕКТИВНАЯ МОБИЛЬНАЯ АДАПТАЦИЯ ДЛЯ СМАРТФОНОВ (ДО 768px) */
+@media screen and (max-width: 768px) {
+    .coop-tabs-nav { flex-direction: column !important; width: 100% !important; max-width: 340px; border-radius: 20px !important; margin-bottom: 35px !important; }
+    .coop-tab-btn { justify-content: center !important; width: 100% !important; }
+    
+    #tab-process.coop-tab-panel.active,
+    #tab-price.coop-tab-panel.active {
+        flex-direction: column !important;
+        gap: 16px !important;
+        align-items: center !important;
+    }
+    
+    .process-grid, .price-grid { flex-direction: column !important; gap: 16px !important; width: 100% !important; }
+    .process-item, .price-card { width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; }
+    .price-card { min-height: auto !important; }
+    
+    .coop-tab-panel > p:not([class]), .coop-note { font-size: 9.5px !important; margin-top: 25px !important; padding: 0 10px !important; }
+}
