@@ -479,3 +479,73 @@ document.addEventListener("DOMContentLoaded", () => {
         window.history.replaceState({ path: cleanUrl }, "", cleanUrl);
     }
 });
+// Усовершенствованная iOS-функция переключения табов с автоматическим плавным скроллом
+function switchCoopTab(tabId) {
+    // Предотвращаем резкие скачки и перезагрузки страницы при клике на ссылки
+    if (window.event) {
+        const target = window.event.target;
+        if (target && target.tagName === 'A') {
+            window.event.preventDefault();
+        }
+    }
+
+    const tabs = document.querySelectorAll('.coop-tab-btn');
+    let targetBtn = null;
+    
+    // Находим кликнутую кнопку на основе переданного ID панели
+    tabs.forEach(btn => {
+        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabId)) {
+            targetBtn = btn;
+        }
+    });
+
+    // 1. Переключаем активное состояние у кнопок-капсул
+    tabs.forEach(btn => btn.classList.remove('active'));
+    if (targetBtn) {
+        targetBtn.classList.add('active');
+    } else if (window.event && window.event.currentTarget) {
+        window.event.currentTarget.classList.add('active');
+    }
+
+    // 2. Находим текущую открытую панель для анимации затухания
+    const currentActivePanel = document.querySelector('.coop-tab-panel.active');
+    
+    if (currentActivePanel) {
+        // Запускаем мягкое iOS-растворение старого контента
+        currentActivePanel.style.opacity = '0';
+        currentActivePanel.style.filter = 'blur(10px)';
+        currentActivePanel.style.transform = 'scale(0.97) translateY(8px)';
+        
+        // Ждем 220мс (пока контент полностью станет прозрачным) и плавно раскрываем новый
+        setTimeout(() => {
+            currentActivePanel.classList.remove('active');
+            
+            const nextPanel = document.getElementById(tabId);
+            if (nextPanel) {
+                nextPanel.classList.add('active');
+                
+                // Микро-таймаут для корректного срабатывания флекс-сетки в браузере
+                setTimeout(() => {
+                    nextPanel.style.opacity = '1';
+                    nextPanel.style.filter = 'blur(0)';
+                    nextPanel.style.transform = 'scale(1) translateY(0)';
+                    
+                    /* ==========================================================================
+                       КРИТИЧЕСКИЙ ФИКС: АВТОМАТИЧЕСКИЙ ПЛАВНЫЙ СКРОЛЛ К НАЧАЛУ БЛОКА
+                       ========================================================================== */
+                    const footerSection = document.getElementById('contact');
+                    if (footerSection) {
+                        footerSection.scrollIntoView({
+                            behavior: 'smooth', // Насильно включаем мягкую, скользящую анимацию скролла
+                            block: 'start'      // Прижимаем секцию сотрудничества ровно к верхнему краю экрана
+                        });
+                    }
+                }, 20);
+            }
+        }, 220);
+    } else {
+        // Страховочный вариант на случай первого запуска секции
+        const nextPanel = document.getElementById(tabId);
+        if (nextPanel) nextPanel.classList.add('active');
+    }
+}
