@@ -2959,24 +2959,6 @@ footer#contact .copy {
         letter-spacing: 0.3px !important;
         border-radius: 40px !important; /* Сохраняем идеальную овальную капсулу при увеличении */
     }
-
-    /* Исправляем сетку карточек портфолио */
-    .grid,
-    .portfolio-grid,
-    [class*="portfolio-grid"] {
-        flex-direction: column !important; /* Насильно выстраиваем видеокарточки в один ряд */
-        align-items: center !important;
-        gap: 24px !important;
-        width: 100% !important;
-    }
-
-    .grid .card,
-    .portfolio-grid .portfolio-item {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
     /* 4. СЕКЦИЯ ОТЗЫВОВ */
     .reviews-section .reviews-container,
     .reviews-section .reviews-grid,
@@ -3739,6 +3721,189 @@ footer#contact .footer-desc {
         font-size: 13px !important; /* Текст задышал, читать теперь максимально легко */
         line-height: 1.5 !important;
     }
+        /* ==========================================================================
+       УВЕЛИЧЕННЫЙ МАКЕТ МОБИЛЬНОГО ПОРТФОЛИО: ПОЛНОЕ ВМЕЩЕНИЕ ВСЕГО ТЕКСТА
+       ========================================================================== */
+    
+    /* 1. РОДИТЕЛЬСКИЙ КОНТЕЙНЕР (ОДНА КОЛОНКА) */
+    .portfolio-section .grid,
+    .portfolio-section .portfolio-grid,
+    #portfolio-grid-container {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 16px !important;
+        box-sizing: border-box !important;
+        gap: 14px !important;
+    }
+
+    /* 2. ТРАНСФОРМАЦИЯ КАРТОЧКИ В УВЕЛИЧЕННУЮ ГОРИЗОНТАЛЬНУЮ ПЛАШКУ */
+    .portfolio-section .card,
+    .card.initial-hide {
+        display: flex !important;
+        flex-direction: row !important; /* Обложка строго слева, контент строго справа */
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 16px !important;
+        
+        width: 100% !important; 
+        min-width: 100% !important;
+        max-width: 100% !important;
+        
+        padding: 12px !important; /* Даем больше простора внутри плашки */
+        background: rgba(255, 255, 255, 0.015) !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        border-radius: 16px !important;
+        
+        /* КРИТИЧЕСКИЙ ФИКС: убираем любые жесткие ограничения высоты, 
+           чтобы карточка плавно росла вниз, если текст длинный */
+        height: auto !important;
+        min-height: auto !important;
+        box-sizing: border-box !important;
+        transform: none !important;
+    }
+
+    /* 3. МАСШТАБИРОВАНИЕ ОБЛОЖКИ ВИДЕО .card-preview ВВЕРХ (СДЕЛАНА КРУПНЕЕ) */
+    .card .card-preview,
+    .portfolio-section .card-preview {
+        /* Увеличиваем пропорции превью под крупный формат */
+        width: 130px !important; 
+        min-width: 130px !important;
+        max-width: 130px !important;
+        height: 86px !important; 
+        
+        border-radius: 12px !important; /* Чуть увеличиваем скругление обложки */
+        overflow: hidden !important;
+        position: relative !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        flex-shrink: 0 !important; /* Запрещаем флексу сжимать превью */
+        
+        background-color: transparent !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* 4. КНОПКА ПЛЕЙ .premium-spa-play ПО ЦЕНТРУ УВЕЛИЧЕННОЙ КАРТИНКИ */
+    .card-preview .premium-spa-play {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        
+        width: 36px !important; /* Слегка увеличиваем диаметр круга под новые пропорции обложки */
+        min-width: 36px !important;
+        max-width: 36px !important;
+        height: 36px !important;
+        min-height: 36px !important;
+        max-height: 36px !important;
+        border-radius: 50% !important;
+        
+        background: rgba(255, 255, 255, 0.22) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        
+        padding: 0 !important;
+        margin: 0 !important;
+        text-indent: 0 !important;
+        line-height: 1 !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+        z-index: 10 !important;
+        transition: all 0.25s ease !important;
+    }
+
+    .card-preview .premium-spa-play::before {
+        content: '' !important;
+        display: block !important;
+        position: relative !important;
+        left: 2px !important; /* Оптический баланс стрелочки */
+        top: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
+        border-style: solid !important;
+        border-width: 5.5px 0 5.5px 10px !important; /* Идеальные киношные пропорции мини-треугольника */
+        border-color: transparent transparent transparent #ffffff !important;
+        background: transparent !important;
+        border-radius: 0% !important;
+        transform: none !important;
+    }
+
+    .card:hover .premium-spa-play { background: #a3b899 !important; border-color: #a3b899 !important; }
+    .card:hover .premium-spa-play::before { border-color: transparent transparent transparent #0d0d0f !important; }
+
+    /* 5. ТЕКСТОВЫЙ БЛОК .card-info СПРАВА (ПОЛНОЕ ВМЕЩЕНИЕ ОПИСАНИЯ) */
+    .card .card-info,
+    .portfolio-section .card-info {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+        text-align: left !important;
+        flex: 1 !important;
+        width: auto !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 0 0 0 2px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Бэджи категорий */
+    .card-info .badge,
+    .card-info [class*="badge"],
+    .portfolio-section .card-info .badge-green {
+        width: max-content !important;
+        max-width: max-content !important;
+        min-width: 0 !important;
+        font-size: 8.5px !important;
+        font-weight: 700 !important;
+        padding: 2.5px 8px !important; /* Чуть просторнее бэдж */
+        margin-bottom: 5px !important;
+        margin-top: 0 !important;
+        border-radius: 4px !important;
+        display: inline-block !important;
+        background: rgba(163, 184, 153, 0.15) !important; 
+        border: 1px solid rgba(163, 184, 153, 0.3) !important;
+        color: #a3b899 !important;
+        -webkit-text-fill-color: #a3b899 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    /* Заголовки роликов */
+    .card-info h3 {
+        font-size: 14.5px !important; /* Слегка крупнее для баланса с увеличенной картинкой */
+        font-weight: 700 !important;
+        line-height: 1.25 !important;
+        margin-top: 0 !important;
+        margin-bottom: 5px !important;
+        color: #ffffff !important;
+    }
+
+    /* КРИТИЧЕСКИЙ ФИКС: РАЗБЛОКИРУЕМ ПОЛНЫЙ ВЫВОД ВСЕГО ОПИСАНИЯ КЕЙСА */
+    .card-info p {
+        font-size: 11.5px !important; /* Чуть крупнее и приятнее для чтения */
+        line-height: 1.4 !important;
+        color: #7a7a80 !important; /* Слегка приподнимаем яркость текста под журнальный стиль */
+        margin: 0 !important;
+        
+        /* Полностью сносим старые обрезки строк плагина, текст больше никогда не спрячется в троеточие! */
+        display: block !important; 
+        -webkit-line-clamp: unset !important; 
+        -webkit-box-orient: unset !important;
+        overflow: visible !important;
+    }
+
 }
 /* ==========================================================================
    МЕДЛЕННЫЙ КИНЕМАТОГРАФИЧНЫЙ REVEAL: ПЛАВНЫЙ ВЛЁТ + МГНОВЕННЫЙ ХОВЕР
