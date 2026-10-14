@@ -549,3 +549,34 @@ function switchCoopTab(tabId) {
         if (nextPanel) nextPanel.classList.add('active');
     }
 }
+/* ==========================================================================
+   БЕЗБАГОВЫЙ ИНТЕРФЕЙСНЫЙ СКРИПТ ПОЯВЛЕНИЯ ПЛИТ ОБО МНЕ ПРИ СКРОЛЛЕ
+   ========================================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    // Находим все наши левые карточки цифр и правые премиальные плиты
+    const revealElements = document.querySelectorAll(".bio-stat-row-card, .bio-premium-tile");
+    
+    // Настройки наблюдателя: срабатывает, когда 10% секции зашло на экран
+    const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1
+    };
+
+    const bioRevealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            // Как только блок пересекает границу видимости
+            if (entry.isIntersecting) {
+                // Накидываем класс активации анимации
+                entry.target.classList.add("reveal-active");
+                // Отключаем слежку за этим элементом, чтобы анимация не дергалась повторно при каждом скролле
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Запускаем слежку за каждой карточкой индивидуально
+    revealElements.forEach(element => {
+        bioRevealObserver.observe(element);
+    });
+});
