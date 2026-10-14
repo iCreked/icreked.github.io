@@ -3722,10 +3722,10 @@ footer#contact .footer-desc {
         line-height: 1.5 !important;
     }
         /* ==========================================================================
-       УВЕЛИЧЕННЫЙ МАКЕТ МОБИЛЬНОГО ПОРТФОЛИО: ПОЛНОЕ ВМЕЩЕНИЕ ВСЕГО ТЕКСТА
+       УЛЬТИМАТИВНЫЙ РАСШИРЕННЫЙ МАКЕТ МОБИЛЬНОГО ПОРТФОЛИО (МАКСИМАЛЬНАЯ ШИРИНА)
        ========================================================================== */
     
-    /* 1. РОДИТЕЛЬСКИЙ КОНТЕЙНЕР (ОДНА КОЛОНКА) */
+    /* 1. РОДИТЕЛЬСКИЙ КОНТЕЙНЕР (РАСШИРЯЕМ СЕТКУ ПО БОКАМ) */
     .portfolio-section .grid,
     .portfolio-section .portfolio-grid,
     #portfolio-grid-container {
@@ -3734,12 +3734,15 @@ footer#contact .footer-desc {
         grid-template-columns: 1fr !important;
         width: 100% !important;
         max-width: 100% !important;
-        padding: 0 16px !important;
+        
+        /* КРИТИЧЕСКИЙ ФИКС: Ужимаем боковые паддинги с 16px до 8px, 
+           чтобы карточки сочно раскрылись почти на весь экран телефона */
+        padding: 0 8px !important; 
         box-sizing: border-box !important;
-        gap: 14px !important;
+        gap: 12px !important;
     }
 
-    /* 2. ТРАНСФОРМАЦИЯ КАРТОЧКИ В УВЕЛИЧЕННУЮ ГОРИЗОНТАЛЬНУЮ ПЛАШКУ */
+    /* 2. УВЕЛИЧЕННАЯ ГОРИЗОНТАЛЬНАЯ КАРТОЧКА-ПЛАШКА */
     .portfolio-section .card,
     .card.initial-hide {
         display: flex !important;
@@ -3752,29 +3755,26 @@ footer#contact .footer-desc {
         min-width: 100% !important;
         max-width: 100% !important;
         
-        padding: 12px !important; /* Даем больше простора внутри плашки */
+        padding: 12px !important; /* Просторные внутренние Web3 паддинги */
         background: rgba(255, 255, 255, 0.015) !important;
         border: 1px solid rgba(255, 255, 255, 0.05) !important;
         border-radius: 16px !important;
         
-        /* КРИТИЧЕСКИЙ ФИКС: убираем любые жесткие ограничения высоты, 
-           чтобы карточка плавно росла вниз, если текст длинный */
         height: auto !important;
         min-height: auto !important;
         box-sizing: border-box !important;
         transform: none !important;
     }
 
-    /* 3. МАСШТАБИРОВАНИЕ ОБЛОЖКИ ВИДЕО .card-preview ВВЕРХ (СДЕЛАНА КРУПНЕЕ) */
+    /* 3. ФИКСАЦИЯ ОБЛОЖКИ ВИДЕО .card-preview */
     .card .card-preview,
     .portfolio-section .card-preview {
-        /* Увеличиваем пропорции превью под крупный формат */
         width: 130px !important; 
         min-width: 130px !important;
         max-width: 130px !important;
         height: 86px !important; 
         
-        border-radius: 12px !important; /* Чуть увеличиваем скругление обложки */
+        border-radius: 12px !important;
         overflow: hidden !important;
         position: relative !important;
         margin: 0 !important;
@@ -3790,14 +3790,14 @@ footer#contact .footer-desc {
         visibility: visible !important;
     }
 
-    /* 4. КНОПКА ПЛЕЙ .premium-spa-play ПО ЦЕНТРУ УВЕЛИЧЕННОЙ КАРТИНКИ */
+    /* 4. КНОПКА ПЛЕЙ .premium-spa-play ПО ЦЕНТРУ КАРТИНКИ */
     .card-preview .premium-spa-play {
         position: absolute !important;
         top: 50% !important;
         left: 50% !important;
         transform: translate(-50%, -50%) !important;
         
-        width: 36px !important; /* Слегка увеличиваем диаметр круга под новые пропорции обложки */
+        width: 36px !important;
         min-width: 36px !important;
         max-width: 36px !important;
         height: 36px !important;
@@ -3832,7 +3832,7 @@ footer#contact .footer-desc {
         width: 0 !important;
         height: 0 !important;
         border-style: solid !important;
-        border-width: 5.5px 0 5.5px 10px !important; /* Идеальные киношные пропорции мини-треугольника */
+        border-width: 5.5px 0 5.5px 10px !important;
         border-color: transparent transparent transparent #ffffff !important;
         background: transparent !important;
         border-radius: 0% !important;
@@ -3842,7 +3842,7 @@ footer#contact .footer-desc {
     .card:hover .premium-spa-play { background: #a3b899 !important; border-color: #a3b899 !important; }
     .card:hover .premium-spa-play::before { border-color: transparent transparent transparent #0d0d0f !important; }
 
-    /* 5. ТЕКСТОВЫЙ БЛОК .card-info СПРАВА (ПОЛНОЕ ВМЕЩЕНИЕ ОПИСАНИЯ) */
+    /* 5. ТЕКСТОВЫЙ БЛОК .card-info SPРАВА */
     .card .card-info,
     .portfolio-section .card-info {
         display: flex !important;
@@ -3867,7 +3867,7 @@ footer#contact .footer-desc {
         min-width: 0 !important;
         font-size: 8.5px !important;
         font-weight: 700 !important;
-        padding: 2.5px 8px !important; /* Чуть просторнее бэдж */
+        padding: 2.5px 8px !important;
         margin-bottom: 5px !important;
         margin-top: 0 !important;
         border-radius: 4px !important;
@@ -3882,7 +3882,7 @@ footer#contact .footer-desc {
 
     /* Заголовки роликов */
     .card-info h3 {
-        font-size: 14.5px !important; /* Слегка крупнее для баланса с увеличенной картинкой */
+        font-size: 14.5px !important;
         font-weight: 700 !important;
         line-height: 1.25 !important;
         margin-top: 0 !important;
@@ -3890,14 +3890,12 @@ footer#contact .footer-desc {
         color: #ffffff !important;
     }
 
-    /* КРИТИЧЕСКИЙ ФИКС: РАЗБЛОКИРУЕМ ПОЛНЫЙ ВЫВОД ВСЕГО ОПИСАНИЯ КЕЙСА */
+    /* Текст описания кейса ролика */
     .card-info p {
-        font-size: 11.5px !important; /* Чуть крупнее и приятнее для чтения */
+        font-size: 11.5px !important;
         line-height: 1.4 !important;
-        color: #7a7a80 !important; /* Слегка приподнимаем яркость текста под журнальный стиль */
+        color: #7a7a80 !important;
         margin: 0 !important;
-        
-        /* Полностью сносим старые обрезки строк плагина, текст больше никогда не спрячется в троеточие! */
         display: block !important; 
         -webkit-line-clamp: unset !important; 
         -webkit-box-orient: unset !important;
