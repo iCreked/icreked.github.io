@@ -3960,3 +3960,93 @@ footer#contact .footer-desc {
 @media (prefers-reduced-motion: reduce) {
     .bio-stat-row-card, .bio-premium-tile { opacity: 1 !important; filter: none !important; transform: none !important; }
 }
+/* ==========================================================================
+   СТИЛИЗАЦИЯ ПАРНЫХ КНОПОК: СВЕТЯЩИЙСЯ TG-БОТ + КОНТУРНЫЙ DISCORD
+   ========================================================================== */
+
+/* Переводим контейнер кнопок в двухколоночный ряд */
+.block-dual-buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 16px !important; /* Трендовый Web3 зазор между кнопками */
+    width: 100% !important;
+    max-width: 680px !important; /* Увеличиваем общую ширину под две кнопки */
+    margin: 0 auto 35px !important;
+}
+
+/* Общие базовые параметры для обеих кнопок-капсул */
+footer#contact .main-tg-bot-btn,
+footer#contact .main-ds-btn {
+    flex: 1 !important; /* Делаем кнопки идеально одинаковыми по ширине */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    
+    padding: 16px 0 !important; /* Сочные премиальные паддинги по высоте */
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    border-radius: 40px !important; /* Наша идеальная форма овальной капсулы */
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
+}
+
+/* Иконки внутри кнопок */
+.bot-mini-icon {
+    flex-shrink: 0 !important;
+    color: inherit !important;
+}
+
+/* КНОПКА №1: ТЕЛЕГРАМ БОТ (ГЛАВНАЯ, ЯРКАЯ ЗАЛИТАЯ ПЛАШКА) */
+footer#contact .main-tg-bot-btn {
+    background: #a3b899 !important; /* Фирменный плотный оливковый хаки */
+    background-color: #a3b899 !important;
+    border: 1px solid #a3b899 !important;
+    color: #0d0d0f !important; /* Контрастный темный текст на зеленом фоне */
+    -webkit-text-fill-color: #0d0d0f !important;
+}
+footer#contact .main-tg-bot-btn:hover {
+    background: #b5cbb1 !important; /* Мягкое благородное осветление при ховере */
+    background-color: #b5cbb1 !important;
+    border-color: #b5cbb1 !important;
+    transform: translateY(-2px) !important; /* Элегантное тактильное всплытие */
+    box-shadow: 0 10px 25px rgba(163, 184, 153, 0.35) !important; /* Сочный оливковый ореол света */
+}
+
+/* КНОПКА №2: ДИСКОРД (ВТОРОСТЕПЕННАЯ, КОНТУРНАЯ МАТОВАЯ ПЛАШКА) */
+footer#contact .main-ds-btn.secondary-outline {
+    background: rgba(255, 255, 255, 0.01) !important;
+    border: 1px solid rgba(163, 184, 153, 0.3) !important; /* Тонкая оливковая обводка */
+    color: #a3b899 !important; /* Матовые зеленые буквы */
+    -webkit-text-fill-color: #a3b899 !important;
+}
+footer#contact .main-ds-btn.secondary-outline:hover {
+    background: rgba(163, 184, 153, 0.08) !important; /* Наливается легкой оливковой плотностью */
+    border-color: #a3b899 !important;
+    color: #ffffff !important; /* Буквы загораются белым */
+    -webkit-text-fill-color: #ffffff !important;
+    transform: translateY(-2px) !important;
+}
+
+/* МОБИЛЬНАЯ АДАПТАЦИЯ (СТРОГО ДЛЯ СМАРТФОНОВ ДО 768px) */
+@media screen and (max-width: 768px) {
+    .block-dual-buttons {
+        flex-direction: column !important; /* На смартфонах кнопки красиво встают друг под друга */
+        gap: 12px !important;
+        width: 100% !important;
+        max-width: 340px !important; /* Удерживаем аккуратную мобильную ширину по центру */
+    }
+    footer#contact .main-tg-bot-btn,
+    footer#contact .main-ds-btn {
+        width: 100% !important;
+        padding: 14px 0 !important; /* Мобильная высота кнопок */
+    }
+}
