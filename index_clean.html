@@ -27,31 +27,45 @@
 <body>
     <div class="page-overlay" onload="this.classList.add('fade-out')" style="animation: autoHideOverlay 0.5s forwards;"></div>
     <div class="cursor-dot"></div>
-    <nav class="site-navigation">
+<nav class="site-navigation">
     <div class="logo-status-container">
-        <a href="#about" class="logo" id="premiumSpaLogo">CREKED</a>
-        <!-- <div class="status-badge is-busy">-->
+        <a href="#about" class="logo" id="premiumSpaLogo">
+            <img src="images/creked_logo_smooth.png" alt="Logo" class="header-brand-icon">
+            CREKED
+        </a>
         <div class="status-badge">
             <span class="status-dot"></span>
             <span class="status-text">Доступен для заказов</span>
         </div>
     </div>
- 
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
 
-        <div class="nav-links-wrapper">
-            <div class="nav-links">
-                <a href="#bio" class="nav-item">Обо мне</a>
-                <a href="#portfolio" class="nav-item">Портфолио</a>
-                <a href="#reviews" class="nav-item">Отзывы</a>
-                <a href="#contact" class="nav-item">Платформы</a>
-            </div>
+    <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
+    <div class="nav-links-wrapper">
+        <div class="nav-links">
+            <a href="#about-block" class="nav-item">Обо мне</a>
+            <a href="#portfolio" class="nav-item">Портфолио</a>
+            <a href="#reviews" class="nav-item">Отзывы</a>
+            <a href="#contact" class="nav-item">Платформы</a>
+            
+            <!-- кнопка пака (обновление)
+            <a href="https://yandex.ru" target="_blank" rel="noopener noreferrer" class="nav-item nav-free-pack-btn">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; vertical-align: middle;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                Free Pack
+            </a> -->
         </div>
-    </nav>
+        
+        <div class="new-spa-lang-container">
+            <a href="index.html" class="spa-lang-btn active">RU</a>
+            <span class="spa-lang-divider">|</span>
+            <a href="index_en.html" class="spa-lang-btn">EN</a>
+        </div>
+    </div>
+</nav>
 
     <!-- main -->
     <header id="about">
