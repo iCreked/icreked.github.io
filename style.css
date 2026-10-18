@@ -693,7 +693,7 @@ footer { padding: 100px 10% 40px; text-align: center; background: #040406; borde
 ::-webkit-scrollbar { width: 8px !important; }
 ::-webkit-scrollbar-track { background: #050507 !important; }
 ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1) !important; border-radius: 10px !important; }
-::-webkit-scrollbar-thumb:hover { background: #00f0ff !important; }
+::-webkit-scrollbar-thumb:hover { background: #424b34 !important; }
 /* Компактные квадратные карточки отзывов */
 .review-card {
     background: #0d0d11;
@@ -4048,5 +4048,122 @@ footer#contact .main-ds-btn.secondary-outline:hover {
     footer#contact .main-ds-btn {
         width: 100% !important;
         padding: 14px 0 !important; /* Мобильная высота кнопок */
+    }
+}
+/* ==========================================================================
+   ВОЗВРАТ К СТАБИЛЬНОЙ СБОРКЕ: ИНТЕГРАЦИЯ ЛОГОТИПА И КНОПКИ FREE PACK
+   ========================================================================== */
+
+/* 1. ПОСАДКА ТВОЕГО ЗНАКА ЛОГОТИПА НА ПК */
+#premiumSpaLogo {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    text-decoration: none !important;
+}
+
+.header-brand-icon {
+    width: 24px !important;
+    height: 24px !important;
+    object-fit: contain !important;
+    border-radius: 6px !important;
+    background: transparent !important;
+    flex-shrink: 0 !important;
+}
+
+/* 2. СТИЛИЗАЦИЯ СТАБИЛЬНОЙ КНОПКИ FREE PACK НА ПК */
+.nav-links .nav-free-pack-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    /* Делаем её изящной контурной капсулой на ПК, убирая фиолетовые наслоения */
+    background: rgba(255, 255, 255, 0.01) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #888893 !important;
+    -webkit-text-fill-color: #888893 !important;
+    text-decoration: none !important;
+    
+    padding: 6px 14px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border-radius: 30px !important;
+    
+    margin-left: 12px !important; /* Аккуратный отступ от кнопки "Контакты" */
+    transition: all 0.3s ease !important;
+}
+
+.nav-links .nav-free-pack-btn:hover {
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.nav-links .nav-free-pack-btn svg {
+    opacity: 0.6;
+    transition: transform 0.3s ease !important;
+}
+.nav-links .nav-free-pack-btn:hover svg {
+    transform: translateY(-1px) !important;
+}
+
+/* ==========================================================================
+   3. АДАПТАЦИЯ КНОПКИ СНИЗУ ВНУТРИ БУРГЕР-МЕНЮ (СТРОГО ДЛЯ МОБИЛ ПАК)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    /* Общие ссылки шторки выстраиваются вертикально */
+    .site-navigation .nav-links {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 28px !important;
+        margin: 0 auto 30px !important;
+    }
+
+    /* УМЕНЬШАЕМ ЗАМЕТНОСТЬ И СТИРАЕМ ОБВОДКУ FREE PACK ВНУТРИ БУРГЕР-МЕНЮ */
+    .nav-links .nav-free-pack-btn {
+        margin-left: 0 !important;
+        margin-top: 15px !important; /* Аккуратный отступ вниз под пункт "Контакты" */
+        width: max-content !important; /* Кнопка больше не растягивается во всю ширину */
+        padding: 0 !important; /* Полностью смываем громоздкие мобильные паддинги круга */
+        
+        /* НАМЕРТВО СТИРАЕМ РАМКУ, ОБВОДКУ И ЛЮБОЙ ФОН НА СМАРТФОНАХ */
+        background: transparent !important;
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        
+        /* Приглушаем цвет букв до аккуратного матового серого, убирая лишнее выделение */
+        color: #55555c !important; 
+        -webkit-text-fill-color: #55555c !important;
+        font-size: 15px !important; /* Делаем шрифт чуть меньше основных пунктов меню */
+        font-weight: 500 !important;
+        text-transform: none !important; /* Убираем агрессивный десктопный капс */
+        letter-spacing: 0.5px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+    }
+
+    /* ПОЛНОСТЬЮ СКРЫВАЕМ ЛЮБЫЕ КРУГЛЫЕ ЗНАЧКИ И ИКОНКИ ВНУТРИ МОБИЛЬНОЙ КНОПКИ */
+    .nav-links .nav-free-pack-btn svg,
+    .nav-links .nav-free-pack-btn::before {
+        display: none !important;
+    }
+
+    /* Мягкий мобильный ховер/тап: кнопка деликатно белеет при нажатии пальцем */
+    .nav-links .nav-free-pack-btn:active,
+    .nav-links .nav-free-pack-btn:hover {
+        color: #a3b899 !important; /* При тапе плавно подсвечивается нашим оливковым */
+        -webkit-text-fill-color: #a3b899 !important;
+        background: transparent !important;
+    }
+
+
+    /* Стабильное нижнее положение тумблера языков */
+    .new-spa-lang-container {
+        margin-top: 0 !important;
+        margin-bottom: 20px !important;
     }
 }
