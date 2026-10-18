@@ -28,46 +28,50 @@
     
     <div class="page-overlay" onload="this.classList.add('fade-out')" style="animation: autoHideOverlay 0.5s forwards;"></div>
     <div class="cursor-dot"></div>
-    <nav class="site-navigation">
+<nav class="site-navigation">
     <div class="logo-status-container">
-        <a href="#about" class="logo" id="premiumSpaLogo">CREKED</a>
-        <!-- <div class="status-badge is-busy"> Не доступен для заказов | Занят -->
+        <a href="#about" class="logo" id="premiumSpaLogo">
+            <img src="images/creked_logo_smooth.png" alt="Logo" class="header-brand-icon">
+            CREKED
+        </a>
         <div class="status-badge">
             <span class="status-dot"></span>
             <span class="status-text">Available for work</span>
         </div>
     </div>
- 
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
 
-        <div class="nav-links-wrapper">
-            <div class="nav-links">
-                <a href="#bio" class="nav-item">About</a>
+    <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
+    <div class="nav-links-wrapper">
+        <div class="nav-links">
+                <a href="#about-block" class="nav-item">About</a>
                 <a href="#portfolio" class="nav-item">Portfolio</a>
                 <a href="#reviews" class="nav-item">Reviews</a>
                 <a href="#contact" class="nav-item">Contacts</a>
-            </div>
-                <!-- НОВЫЙ ЧИСТЫЙ И НЕЗАВИСИМЫЙ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ -->
-                <div class="new-spa-lang-container">
-                    <a href="index.html" class="spa-lang-btn">RU</a>
-                    <span class="spa-lang-divider">/</span>
-                    <a href="index_en.html" class="spa-lang-btn active">EN</a>
-                </div>
-        </div>
-    </nav>
+            
+            <!-- кнопка пака (обновление)
+            <a href="https://yandex.ru" target="_blank" rel="noopener noreferrer" class="nav-item nav-free-pack-btn">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; vertical-align: middle;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                Free Pack
+            </a> -->
 
-    <!-- Главный экран -->
+        </div>
+        
+        <div class="new-spa-lang-container">
+            <a href="index.html" class="spa-lang-btn">RU</a>
+            <span class="spa-lang-divider">|</span>
+            <a href="index_en.html" class="spa-lang-btn active">EN</a>
+        </div>
+    </div>
+</nav>
     <header id="about">
         <div class="hero-content-center">
                     <div class="hero-container-split">
-            <!-- Твой текст и кнопки... -->
         </div>
-
-        <!-- НАША НОВАЯ БЕЖЕВЯ СФЕРА В HTML (ПО СТАРИНКЕ) -->
         <div class="premium-spa-sphere"></div>
             <h1 class="main-title">EDITING FOR <span class="cyan-accent">YOUTUBE, SHORTS</span> AND <span class="cyan-accent">REELS</span></h1>
             <p class="hero-desc">Dynamic editing with a focus on pacing, graphics, and sound. From Shorts to full-length YouTube videos.</p>
@@ -90,17 +94,11 @@
             </div>
         </div> -->
     </header>
-<!-- ОБНОВЛЕННАЯ СЕКЦИЯ ОБО МНЕ В СТИЛЕ PREMIUM GRID -->
 <section id="about-block" class="bio-section">
     <div class="bio-container-grid">
-        
-        <!-- ОБЩИЙ ЗАГОЛОВОК СЕКЦИИ -->
         <h2 class="section-title">ABOUT ME</h2>
         
-        <!-- ДВУХКОЛОНОЧНЫЙ GRID МАКЕТ ПО РЕФЕРЕНСУ -->
         <div class="bio-main-layout">
-            
-            <!-- ЛЕВАЯ КОЛОНКА: СТОПКА ЦИФР СТАТИСТИКИ -->
             <div class="bio-stats-column">
                 
                 <div class="bio-stat-row-card">
@@ -109,7 +107,6 @@
                 </div>
                 
                 <div class="bio-stat-row-card">
-                    <!-- Иконка человечков как на референсе -->
                     <div class="bio-stat-icon-wrap">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
@@ -118,7 +115,6 @@
                 </div>
                 
                 <div class="bio-stat-row-card">
-                    <!-- Иконка календаря/дедлайнов как на референсе -->
                     <div class="bio-stat-icon-wrap">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                     </div>
@@ -128,10 +124,8 @@
                 
             </div>
             
-            <!-- ПРАВАЯ КОЛОНКА: АСИММЕТРИЧНЫЕ ПЛИТЫ С ТЕКСТОМ И СТЕКОМ -->
             <div class="bio-content-column">
                 
-                <!-- БОЛЬШАЯ ПЛИТА: КЛЮЧЕВОЙ СТЕК -->
                 <div class="bio-premium-tile tile-stack">
                     <div class="bio-tile-icon">
                         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
@@ -144,11 +138,8 @@
                         <li>Sound Design</li>
                     </ul>
                 </div>
-                
-                <!-- ДВЕ СИММЕТРИЧНЫЕ НИЖНИЕ ПЛИТЫ -->
+
                 <div class="bio-tiles-subrow">
-                    
-                    <!-- ПЛИТА: СПЕЦИАЛИЗАЦИЯ -->
                     <div class="bio-premium-tile tile-spec">
                         <div class="bio-tile-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
@@ -162,7 +153,6 @@
                         </ul>
                     </div>
                     
-                    <!-- ПЛИТА: ФИЛОСОФИЯ -->
                     <div class="bio-premium-tile tile-philosophy">
                         <div class="bio-tile-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
@@ -189,7 +179,6 @@
                 <button class="filter-btn" data-filter="vertical">Vertical Video</button>
                 <button class="filter-btn" data-filter="gaming">Gaming Montage</button>
             </div>
-                                                <!-- КАРТОЧКИ!!!!!!!!! -->
             <div class="grid">
                 <!-- Rikzario (ВЕРТИКАЛЬНОЕ) -->
                 <div class="card" data-category="vertical" data-date="2026-09-18" data-video="https://www.youtube.com/embed/lO1akytPSow?si=Y8IrsG24NRIen-Gu" data-before="https://www.youtube.com/embed/TaVAHeuxh5g?si=NHm77VlbZc8H48Zk">
@@ -340,7 +329,7 @@
             </div> -->
 
 
-<!-- ДЛЯ НОВЫХ ВИДЕО -->
+<!-- for_new -->
 
             </div>
         </div>
@@ -359,7 +348,6 @@
         </div>
     </div>
 
-    <!-- Секция: Отзывы (Проверенная разметка) -->
     <section id="reviews" class="reviews-section">
         <div class="reviews-container">
             <h2 class="section-title">REVIEWS</h2>
@@ -369,7 +357,6 @@
                                 <!-- <span class="review-platform ds-badge">Discord</span> -->
                                 <!-- <span class="review-platform tg-badge">Telegram</span> -->
 
-                <!-- Отзыв Quitly (С поддержкой видео) -->
                 <div class="review-card" data-review-video="https://www.youtube.com/embed/IMHw60Q4qjk?si=QAScrzweQpZFCKH8">
                     <div class="review-header">
                         <div class="review-avatar" style="background-image: url('images/quitly_rev.jpg');"></div>
@@ -382,8 +369,6 @@
                     <p class="review-text">«Thanks for adding the subtitles and the separate overlay for the money transfer :)»</p>
                     <div class="review-video-link-holder"></div>
                 </div>
-
-                <!-- Отзыв Rikzario (С поддержкой видео) -->
                     <div class="review-card" data-review-video="https://www.youtube.com/embed/lO1akytPSow?si=Y8IrsG24NRIen-Gu" data-review-before="https://www.youtube.com/embed/TaVAHeuxh5g?si=NHm77VlbZc8H48Zk">
                     <div class="review-header">
                         <div class="review-avatar" style="background-image: url('images/rikzario_rev.jpg');"></div>
@@ -396,8 +381,6 @@
                     <p class="review-text">«Fast and efficient. I recommend.»</p>
                     <div class="review-video-link-holder"></div>
                 </div>
-
-                <!-- Alina_Swift (С поддержкой видео) -->
                     <div class="review-card" data-review-video="https://www.youtube.com/embed/AZ3slJp1XvY?si=US9TK5f9HTTp5r9w">
                     <div class="review-header">
                         <div class="review-avatar" style="background-image: url('images/alina_rev.jpg');"></div>
@@ -426,8 +409,6 @@
         
         <h2 class="footer-title">Contact Information and Partnership Details</h2>
         <p class="order-notice">Transparent terms, clear stages, and flexible rates tailored to any of your needs.</p>
-
-        <!-- ТУМБЛЕР ПЕРЕКЛЮЧЕНИЯ ВКЛАДОК -->
         <div class="coop-tabs-nav">
             <button class="coop-tab-btn active" onclick="switchCoopTab('tab-contacts')">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.18 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -443,10 +424,8 @@
             </button>
         </div>
 
-        <!-- ОКНА С КОНТЕНТОМ -->
         <div class="coop-tabs-content">
             
-            <!-- ВКЛАДКА 1: КОНТАКТЫ (ОТКРЫТА ПО УМОЛЧАНИЮ) -->
             <div id="tab-contacts" class="coop-tab-panel active">
 <div class="main-order-block block-dual-buttons">
     <a href="https://t.me/creked_bot" target="_blank" class="main-tg-bot-btn">
@@ -466,7 +445,6 @@
 </div>
             </div>
 
-            <!-- ВКЛАДКА 2: ПРОЦЕСС РАБОТЫ -->
             <div id="tab-process" class="coop-tab-panel">
                 <div class="process-grid">
                     <div class="process-item">
@@ -495,8 +473,6 @@
                     The average production time for a short video is 1–2 days.
                 </div>
             </div>
-
-            <!-- ВКЛАДКА 3: ПРАЙС-ЛИСТ -->
             <div id="tab-price" class="coop-tab-panel">
                 <div class="price-grid">
                     <div class="price-card">
@@ -538,7 +514,7 @@
 
         </div>
 
-        <p class="copy">© 2026 Creked (v2.14). All rights reserved.</p>
+        <p class="copy">© 2026 Creked (v2.2). All rights reserved.</p>
     </div>
 </footer>
     <div class="back-to-top" id="scrollTopBtn">▲</div>
